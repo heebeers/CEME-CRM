@@ -1,0 +1,13 @@
+POST http://localhost:8080/customers/ HTTP/1.1
+content-type: application/json
+
+{ 
+    "firstName" : "Rick",  
+    "middleName":"B",
+    "lastName" : "Hunter",
+    "address": "231 Macross St, SDF-1 32415",
+    "email":"rick@robotech.net",
+    "customerPhone": "564738291",
+    "preferredContact": "mail",
+    "products": "boat"
+}

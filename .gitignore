@@ -1,0 +1,145 @@
+node_modules
+*.log
+.idea
+*.iml
+*.sw*
+npm-shrinkwrap.json
+dist
+ts3.5
+.tern-port
+.cache
+coverage/
+*.lerna_backup
+build
+packages/examples/automated-*
+/**/LICENSE
+docs/public
+packs/*.tgz
+package-lock.json
+client/yarn.lock
+.nvmrc
+storybook-static
+integration/__image_snapshots__/__diff_output__
+.jest-test-results.json
+/examples/cra-kitchen-sink/src/__image_snapshots__/__diff_output__/
+lib/*.jar
+lib/**/dll
+/false
+/addons/docs/common/config-*
+built-storybooks
+cypress/videos
+cypress/screenshots
+examples/ember-cli/ember-output
+.verdaccio-cache
+tsconfig.tsbuildinfo
+
+##############################
+## Java
+##############################
+.mtj.tmp/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
+##############################
+## Maven
+##############################
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+pom.xml.bak
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+##############################
+## Gradle
+##############################
+bin/
+build/
+.gradle
+.gradletasknamecache
+gradle-app.setting
+!gradle-wrapper.jar
+
+##############################
+## IntelliJ
+##############################
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+##############################
+## Eclipse
+##############################
+.settings/
+bin/
+tmp/
+.metadata
+.classpath
+.project
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.factorypath
+
+##############################
+## NetBeans
+##############################
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+##############################
+## Visual Studio Code
+##############################
+.vscode/
+.code-workspace
+
+##############################
+## OS X
+##############################
+.DS_Store
+
+CRM/.settings/
+
+# From Client Gitignore
+# dependencies
+client/node_modules
+client/.pnp
+client/.pnp.js
+
+# testing
+client/coverage
+
+# production
+client/build
+
+# misc
+client/.DS_Store
+client/.env.local
+client/.env.development.local
+client/.env.test.local
+client/.env.production.local
+
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+

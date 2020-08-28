@@ -14,4 +14,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public interface InteractionRepository extends MongoRepository<Interaction, String> {
 
     List<Interaction> findByCustomerId(@Param("id") String id);
+
+    List<Interaction> findByEmployeeId(@Param("id") String id);
 }

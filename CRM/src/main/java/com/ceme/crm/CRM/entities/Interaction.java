@@ -15,6 +15,8 @@ public class Interaction {
     private String interactionFollowUpType;
     private Date iteractionFollowUpDate;
     private Date interactionDate;
+    private String employeeId;
+    private int priorityLevel;
 
     public String getId() {
         return id.toString();
@@ -70,6 +72,22 @@ public class Interaction {
 
     public void setInteractionDate(Date interactionDate) {
         this.interactionDate = interactionDate;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public int getPriorityLevel() {
+        return priorityLevel;
+    }
+
+    public void setPriorityLevel(int priorityLevel) {
+        this.priorityLevel = priorityLevel;
     }
 
 }

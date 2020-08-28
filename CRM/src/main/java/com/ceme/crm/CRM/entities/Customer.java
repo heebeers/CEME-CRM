@@ -3,6 +3,8 @@ package com.ceme.crm.CRM.entities;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 public class Customer {
     @Id
     private ObjectId id;
@@ -10,11 +12,18 @@ public class Customer {
     private String firstName;
     private String middleName;
     private String lastName;
-    private String address;
+    private String currentAddress;
+    private Date currentAddressAddedDate;
+    private String previousAddress;
+    private Date previousAddressAddedDate;
+    private Date serviceStartDate;
+    private Date dateOfBirth;
     private String email;
     private String customerPhone;
     private String preferredContact;
+    private String secondaryCustomerContact;
     private String products;
+    private boolean activeCustomer;
 
     public String getId() {
         return id.toString();
@@ -48,12 +57,12 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCurrentAddress() {
+        return currentAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCurrentAddress(String currentAddres) {
+        this.currentAddress = currentAddres;
     }
 
     public String getEmail() {
@@ -86,6 +95,62 @@ public class Customer {
 
     public void setProducts(String products) {
         this.products = products;
+    }
+
+    public Date getCurrentAddressAddedDate() {
+        return currentAddressAddedDate;
+    }
+
+    public void setCurrentAddressAddedDate(Date currentAddressAddedDate) {
+        this.currentAddressAddedDate = currentAddressAddedDate;
+    }
+
+    public String getPreviousAddress() {
+        return previousAddress;
+    }
+
+    public void setPreviousAddress(String previousAddress) {
+        this.previousAddress = previousAddress;
+    }
+
+    public Date getPreviousAddressAddedDate() {
+        return previousAddressAddedDate;
+    }
+
+    public void setPreviousAddressAddedDate(Date previousAddressAddedDate) {
+        this.previousAddressAddedDate = previousAddressAddedDate;
+    }
+
+    public Date getServiceStartDate() {
+        return serviceStartDate;
+    }
+
+    public void setServiceStartDate(Date serviceStartDate) {
+        this.serviceStartDate = serviceStartDate;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getSecondaryCustomerContact() {
+        return secondaryCustomerContact;
+    }
+
+    public void setSecondaryCustomerContact(String secondaryCustomerContact) {
+        this.secondaryCustomerContact = secondaryCustomerContact;
+    }
+
+    public boolean isActiveCustomer() {
+        return activeCustomer;
+    }
+
+    public void setActiveCustomer(boolean activeCustomer) {
+        this.activeCustomer = activeCustomer;
     }
 
 }

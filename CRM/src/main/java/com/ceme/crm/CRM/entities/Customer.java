@@ -12,9 +12,19 @@ public class Customer {
     private String firstName;
     private String middleName;
     private String lastName;
-    private String currentAddress;
+    private String currentStreetAddress;
+    private String currentAddressLine1;
+    private String currentAddressLine2;
+    private String currentAddressCity;
+    private String currentAddressState;
+    private String currentAddresszip;
     private Date currentAddressAddedDate;
-    private String previousAddress;
+    private String previousStreetAddress;
+    private String previousAddressLine1;
+    private String previousAddressLine2;
+    private String previousAddressCity;
+    private String previousAddressState;
+    private String previousAddresszip;
     private Date previousAddressAddedDate;
     private Date serviceStartDate;
     private Date dateOfBirth;
@@ -57,14 +67,6 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getCurrentAddress() {
-        return currentAddress;
-    }
-
-    public void setCurrentAddress(String currentAddres) {
-        this.currentAddress = currentAddres;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -105,14 +107,6 @@ public class Customer {
         this.currentAddressAddedDate = currentAddressAddedDate;
     }
 
-    public String getPreviousAddress() {
-        return previousAddress;
-    }
-
-    public void setPreviousAddress(String previousAddress) {
-        this.previousAddress = previousAddress;
-    }
-
     public Date getPreviousAddressAddedDate() {
         return previousAddressAddedDate;
     }
@@ -151,6 +145,102 @@ public class Customer {
 
     public void setActiveCustomer(boolean activeCustomer) {
         this.activeCustomer = activeCustomer;
+    }
+
+    public String getCurrentStreetAddress() {
+        return currentStreetAddress;
+    }
+
+    public void setCurrentStreetAddress(String currentStreetAddress) {
+        this.currentStreetAddress = currentStreetAddress;
+    }
+
+    public String getCurrentAddressLine1() {
+        return currentAddressLine1;
+    }
+
+    public void setCurrentAddressLine1(String currentAddressLine1) {
+        this.currentAddressLine1 = currentAddressLine1;
+    }
+
+    public String getCurrentAddressLine2() {
+        return currentAddressLine2;
+    }
+
+    public void setCurrentAddressLine2(String currentAddressLine2) {
+        this.currentAddressLine2 = currentAddressLine2;
+    }
+
+    public String getCurrentAddressCity() {
+        return currentAddressCity;
+    }
+
+    public void setCurrentAddressCity(String currentAddressCity) {
+        this.currentAddressCity = currentAddressCity;
+    }
+
+    public String getCurrentAddressState() {
+        return currentAddressState;
+    }
+
+    public void setCurrentAddressState(String currentAddressState) {
+        this.currentAddressState = currentAddressState;
+    }
+
+    public String getCurrentAddresszip() {
+        return currentAddresszip;
+    }
+
+    public void setCurrentAddresszip(String currentAddresszip) {
+        this.currentAddresszip = currentAddresszip;
+    }
+
+    public String getPreviousStreetAddress() {
+        return previousStreetAddress;
+    }
+
+    public void setPreviousStreetAddress(String previousStreetAddress) {
+        this.previousStreetAddress = previousStreetAddress;
+    }
+
+    public String getPreviousAddressLine1() {
+        return previousAddressLine1;
+    }
+
+    public void setPreviousAddressLine1(String previousAddressLine1) {
+        this.previousAddressLine1 = previousAddressLine1;
+    }
+
+    public String getPreviousAddressLine2() {
+        return previousAddressLine2;
+    }
+
+    public void setPreviousAddressLine2(String previousAddressLine2) {
+        this.previousAddressLine2 = previousAddressLine2;
+    }
+
+    public String getPreviousAddressCity() {
+        return previousAddressCity;
+    }
+
+    public void setPreviousAddressCity(String previousAddressCity) {
+        this.previousAddressCity = previousAddressCity;
+    }
+
+    public String getPreviousAddressState() {
+        return previousAddressState;
+    }
+
+    public void setPreviousAddressState(String previousAddressState) {
+        this.previousAddressState = previousAddressState;
+    }
+
+    public String getPreviousAddresszip() {
+        return previousAddresszip;
+    }
+
+    public void setPreviousAddresszip(String previousAddresszip) {
+        this.previousAddresszip = previousAddresszip;
     }
 
 }

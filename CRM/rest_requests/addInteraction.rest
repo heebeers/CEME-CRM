@@ -1,12 +1,13 @@
 POST http://localhost:8080/interactions/ HTTP/1.1
 content-type: application/json
 
-{ 
-    "customerId": "5f4323475b2bce3e6d9dbe7c",
-    "interactionType": "mail",
-    "interactionFollowUpType": "text",
-    "interactionsFollowUpDate": "2012-06-23T18:25:43.511Z",
-    "interactionDate": "2012-06-23T18:25:43.511Z"
+{
+  "customerId": "5f4d2ec8165b200d0474f06e",
+  "employeeId": "5f4d3b15165b200d0474f070",
+  "interactionDate": "2020-02-31T17:59:59.024Z",
+  "interactionFollowUpType": "phone",
+  "interactionNotes": "even less notes to be found here",
+  "interactionType": "email",
+  "iteractionFollowUpDate": "2020-10-31T17:59:59.024Z",
+  "priorityLevel": 5
 }
-
-

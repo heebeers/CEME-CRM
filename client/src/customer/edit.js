@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from 'react-redux';
-import {addCUSTOMER, store, ADD_CUSTOMER_BEGIN} from './../actions/actions';
-
+import {updateCUSTOMER, getCUSTOMER, store, UPDATE_CUSTOMER_BEGIN} from '../actions/actions';
 import { useSelector, useDispatch } from "react-redux";
 
 
-function Create(props) {
-
+function Edit(props) {
   const customerState = useSelector((state) => state);
   const {customer, loading, error} = customerState;
   const dispatch = useDispatch();
-
+  useEffect(() => {
+    dispatch(getCUSTOMER("00000000c3f2e4605ac7635b"));
+    return () => {
+      //
+    };
+  }, []);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -64,13 +67,13 @@ function Create(props) {
     customer.products = products;
     customer.activeCustomer = activeCustomer;
 
-    dispatch(addCUSTOMER(customer));
+    dispatch(updateCUSTOMER(customer));
   };
 
   return (
-    <div className ="container">
+    <>
       <div style={{ marginTop: 10 }}>
-        <h3>Add New Customer</h3>
+        <h3>Update Current Customer</h3>
 
         <form onSubmit={submitHandler} autoComplete="off">
           <div className="form-row">
@@ -301,8 +304,8 @@ function Create(props) {
           </div>
         </form>
       </div>
-      </div>
+      </>
   );
 }
 
-export default Create;
+export default Edit;

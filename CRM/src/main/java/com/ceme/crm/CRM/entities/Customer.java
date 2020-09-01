@@ -12,14 +12,12 @@ public class Customer {
     private String firstName;
     private String middleName;
     private String lastName;
-    private String currentStreetAddress;
     private String currentAddressLine1;
     private String currentAddressLine2;
     private String currentAddressCity;
     private String currentAddressState;
     private String currentAddresszip;
     private Date currentAddressAddedDate;
-    private String previousStreetAddress;
     private String previousAddressLine1;
     private String previousAddressLine2;
     private String previousAddressCity;
@@ -147,14 +145,6 @@ public class Customer {
         this.activeCustomer = activeCustomer;
     }
 
-    public String getCurrentStreetAddress() {
-        return currentStreetAddress;
-    }
-
-    public void setCurrentStreetAddress(String currentStreetAddress) {
-        this.currentStreetAddress = currentStreetAddress;
-    }
-
     public String getCurrentAddressLine1() {
         return currentAddressLine1;
     }
@@ -193,14 +183,6 @@ public class Customer {
 
     public void setCurrentAddresszip(String currentAddresszip) {
         this.currentAddresszip = currentAddresszip;
-    }
-
-    public String getPreviousStreetAddress() {
-        return previousStreetAddress;
-    }
-
-    public void setPreviousStreetAddress(String previousStreetAddress) {
-        this.previousStreetAddress = previousStreetAddress;
     }
 
     public String getPreviousAddressLine1() {

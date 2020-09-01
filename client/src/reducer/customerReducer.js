@@ -2,9 +2,21 @@
 
 
 // import the various actions from actions.js which are used in the reducer
+import { FETCH_INTERACTIONS_BEGIN,
+  FETCH_INTERACTIONS_SUCCESS,
+  FETCH_INTERACTIONS_FAILURE } from '../actions/actions';
+
 import { FETCH_CUSTOMERS_BEGIN,
  FETCH_CUSTOMERS_SUCCESS,
  FETCH_CUSTOMERS_FAILURE } from './../actions/actions';
+
+ import { GET_CUSTOMER_BEGIN,
+  GET_CUSTOMER_SUCCESS,
+  GET_CUSTOMER_FAILURE } from './../actions/actions';
+
+ import { UPDATE_CUSTOMER_BEGIN,
+   UPDATE_CUSTOMER_SUCCESS,
+   UPDATE_CUSTOMER_FAILURE } from './../actions/actions';
 
  import { ADD_CUSTOMER_BEGIN,
   ADD_CUSTOMER_SUCCESS,
@@ -40,7 +52,44 @@ import { FETCH_CUSTOMERS_BEGIN,
           error: action.payload.error,
           customers: []
         };
-        case ADD_CUSTOMER_BEGIN:
+        case GET_CUSTOMER_BEGIN:
+          return {
+            ...state,
+            loading:true,
+            error: null
+          }
+        case GET_CUSTOMER_SUCCESS:
+          return {
+            ...state,
+            loading: false,
+            customer: action.payload.customer
+          };
+        case GET_CUSTOMER_FAILURE:
+          return {
+            ...state,
+            loading: false,
+            error: action.payload.error,
+            customers: []
+          };
+          case UPDATE_CUSTOMER_BEGIN:
+            return {
+              ...state,
+              loading:true,
+              error: null
+            }
+          case UPDATE_CUSTOMER_SUCCESS:
+            return {
+              ...state,
+              loading: false
+            };
+          case UPDATE_CUSTOMER_FAILURE:
+            return {
+              ...state,
+              loading: false,
+              error: action.payload.error,
+              customer: []
+            };
+          case ADD_CUSTOMER_BEGIN:
           return {
             ...state,
             loading:true,
@@ -49,16 +98,34 @@ import { FETCH_CUSTOMERS_BEGIN,
         case ADD_CUSTOMER_SUCCESS:
           return {
             ...state,
-            loading: false,
-            
+            loading: false            
           };
         case ADD_CUSTOMER_FAILURE:
           return {
             ...state,
             loading: false,
-            error: action.payload.error,
-            
+            error: action.payload.error            
           };
+          case FETCH_INTERACTIONS_BEGIN:
+            return {
+              ...state,
+              loading:true,
+              error: null
+            }
+          case FETCH_INTERACTIONS_SUCCESS:
+            return {
+              ...state,
+              loading: false,
+              interactions: action.payload.interactions
+            };
+          case FETCH_INTERACTIONS_FAILURE:
+            return {
+              ...state,
+              loading: false,
+              error: action.payload.error,
+              interactions: []
+            };
+        
       default:
           return state;
       }  

@@ -1,12 +1,14 @@
 import React, {useEffect} from "react";
 import "./App.css";
-import TableRow from "./TableRow";
+import CustomerTable from "./CustomerTable";
 import Create from "./customer/create";
+import Edit from "./customer/edit";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { fetchCUSTOMERs } from "./actions/actions";
 
 // needed for functional components
 import { useSelector, useDispatch } from "react-redux";
+import ShowInteractions from "./interactions/ShowInteractions";
 
 function App(props) {
 
@@ -48,33 +50,27 @@ function App(props) {
                     Create Customer
                   </Link>
                 </li>
+                {/* <li className="nav-item">
+                  <Link to={"/edit/id=00000000c3f2e4605ac7635b"} className="nav-link">
+                    Edit Customer
+                  </Link>
+                </li> */}
               </ul>
+
             </div>
           </nav>{" "}
           <br />
           <h1>Customer Manager</h1> <br />
           <Switch>
-            <Route exact path="/create" component={Create} /> 
-            <Route path="/index" component={App} />
+            <Route path="/create" component={Create} /> 
+            <Route path="/edit/id=00000000c3f2e4605ac7635b" component={Edit} /> 
+            <Route path="/showInteractions/id=00000000c3f2e4605ac7635b" component={ShowInteractions} /> 
+            <Route exact path="/index" component={App} />
           </Switch>
         </div>
         <div className="App">
           <h1>Here are my Customers!</h1>
-          <table border="1" width="80%">
-            <thead>
-              <tr>
-                <th>FirstName</th>
-                <th>LastName</th>
-              </tr>
-            </thead>
-            <tbody>
-            {
-            customers.map((customer) => (
-              <TableRow obj={customer} />
-            ))
-            }
-              </tbody>
-          </table>
+          <CustomerTable customers={customers} />
         </div>
       </Router>
       )};

@@ -36,7 +36,7 @@ function Create(props) {
   const [previousAddressAddedDate, setPreviousAddressAddedDate] = useState("");
   const [serviceStartDate, setServiceStartDate] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [email, setEMail] = useState("");
+  const [email, setEmail] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [preferredContact, setPreferredContact] = useState("");
   const [secondaryCustomerContact, setSecondaryCustomerContact] = useState("");
@@ -93,6 +93,21 @@ function Create(props) {
             setCurrentAddressCity: "",
             currentAddressState: "",
             currentAddresszip: "",
+            currentAddressAddedDate: "",
+            previousAddressLine1: "",
+            previousAddressLine2: "",
+            previousAddressCity: "",
+            previousAddressState: "",
+            previousAddresszip: "",
+            previousAddressAddedDate: "",
+            serviceStartDate: "",
+            dateOfBirth: "",
+            email: "",
+            customerPhone: "",
+            preferredContact: "",
+            secondaryCustomerContact: "",
+            products: "",
+            activeCustomer: "",
           }}
           validate={(values) => {
             const errors: Partial<Values> = {};
@@ -219,13 +234,19 @@ function Create(props) {
                   required
                 />
               </div>
-              <label for="currentAddressAddedDate">Address Added Date: </label>
-              <input
-                id="currentAddressAddedDate"
-                type="date"
-                className="form-control"
-                onChange={(e) => setCurrentAddressAddedDate(e.target.value)}
-              />
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  margin="normal"
+                  id="currentAddressAddedDate"
+                  label="Current Address Added Date"
+                  format="MM/dd/yyyy"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date",
+                  }}
+                />
+              </MuiPickersUtilsProvider>
               <div className="form-row">
                 Previous Address
                 <div className="form-group">
@@ -274,17 +295,19 @@ function Create(props) {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="previousAddressAddedDate">
-                    Address Added Date:{" "}
-                  </label>
-                  <input
-                    id="previousAddressAddedDate"
-                    type="date"
-                    className="form-control"
-                    onChange={(e) =>
-                      setPreviousAddressAddedDate(e.target.value)
-                    }
-                  />
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <KeyboardDatePicker
+                      margin="normal"
+                      id="previousAddressAddedDate"
+                      label="Previous Address Added Date"
+                      format="MM/dd/yyyy"
+                      value={selectedDate}
+                      onChange={handleDateChange}
+                      KeyboardButtonProps={{
+                        "aria-label": "change date",
+                      }}
+                    />
+                  </MuiPickersUtilsProvider>
                 </div>
               </div>
               <div className="form-row">
@@ -295,6 +318,7 @@ function Create(props) {
                     name="email"
                     type="email"
                     label="Email"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
@@ -333,13 +357,19 @@ function Create(props) {
               </div>
               <div className="form-row">
                 <div className="form-group">
-                  <label for="serviceStartDate">Service Start Date: </label>
-                  <input
-                    id="serviceStartDate"
-                    type="date"
-                    className="form-control"
-                    onChange={(e) => setServiceStartDate(e.target.value)}
-                  />
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <KeyboardDatePicker
+                      margin="normal"
+                      id="serviceStartDate"
+                      label="Service Start Date"
+                      format="MM/dd/yyyy"
+                      value={selectedDate}
+                      onChange={handleDateChange}
+                      KeyboardButtonProps={{
+                        "aria-label": "change date",
+                      }}
+                    />
+                  </MuiPickersUtilsProvider>
                 </div>
                 <div className="form-group">
                   <label for="products">Products: </label>

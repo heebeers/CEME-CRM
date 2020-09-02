@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { connect } from 'react-redux';
-import {updateCUSTOMER, getCUSTOMER, store, UPDATE_CUSTOMER_BEGIN} from '../actions/actions';
+import { connect } from "react-redux";
+import {
+  updateCUSTOMER,
+  getCUSTOMER,
+  store,
+  UPDATE_CUSTOMER_BEGIN,
+} from "../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
-
 
 function Edit(props) {
   const customerState = useSelector((state) => state);
-  const {customer, loading, error} = customerState;
+  const { customer, loading, error } = customerState;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCUSTOMER("00000000c3f2e4605ac7635b"));
@@ -23,24 +27,24 @@ function Edit(props) {
   const [currentAddressLine2, setCurrentAddressLine2] = useState("");
   const [currentAddressCity, setCurrentAddressCity] = useState("");
   const [currentAddressState, setCurrentAddressState] = useState("");
-  const [currentAddresszip, setCurrentAddressZip] = useState(""); 
+  const [currentAddresszip, setCurrentAddressZip] = useState("");
   const [currentAddressAddedDate, setCurrentAddressAddedDate] = useState("");
   const [previousAddressLine1, setPreviousAddressLine1] = useState("");
-  const [previousAddressLine2, setPreviousAddressLine2] = useState(""); 
-  const [previousAddressCity, setPreviousAddressCity] = useState(""); 
+  const [previousAddressLine2, setPreviousAddressLine2] = useState("");
+  const [previousAddressCity, setPreviousAddressCity] = useState("");
   const [previousAddressState, setPreviousAddressState] = useState("");
   const [previousAddresszip, setPreviousAddresszip] = useState("");
   const [previousAddressAddedDate, setPreviousAddressAddedDate] = useState("");
   const [serviceStartDate, setServiceStartDate] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [email, setEMail] = useState("");
+  const [email, setEmail] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [preferredContact, setPreferredContact] = useState("");
   const [secondaryCustomerContact, setSecondaryCustomerContact] = useState("");
   const [products, setProducts] = useState("");
   const [activeCustomer, setActiveCustomer] = useState("");
 
-  const submitHandler = async(e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     // this is empty
     customer.firstName = firstName;
@@ -83,7 +87,7 @@ function Edit(props) {
                 id="firstName"
                 type="text"
                 className="form-control"
-                onChange={(e) => setFirstName(e.target.value)}                
+                onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -92,7 +96,7 @@ function Edit(props) {
                 id="middleName"
                 type="text"
                 className="form-control"
-                onChange={(e) => setMiddleName(e.target.value)}                
+                onChange={(e) => setMiddleName(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -101,7 +105,7 @@ function Edit(props) {
                 id="lastName"
                 type="text"
                 className="form-control"
-                onChange={(e) => setLastName(e.target.value)}                
+                onChange={(e) => setLastName(e.target.value)}
               />
             </div>
           </div>
@@ -112,18 +116,19 @@ function Edit(props) {
                 id="dateOfBirth"
                 type="date"
                 className="form-control"
-                onChange={(e) => setDateOfBirth(e.target.value)}                
+                onChange={(e) => setDateOfBirth(e.target.value)}
               />
             </div>
           </div>
-          <div className="form-row">Current Address
+          <div className="form-row">
+            Current Address
             <div className="form-group col-md-5">
               <label for="currentAddressLine1">Address Line1: </label>
               <input
                 id="currentAddressLine1"
                 type="text"
                 className="form-control"
-                onChange={(e) => setCurrentAddressLine1(e.target.value)}                
+                onChange={(e) => setCurrentAddressLine1(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -132,7 +137,7 @@ function Edit(props) {
                 id="currentAddressLine1"
                 type="text"
                 className="form-control"
-                onChange={(e) => setCurrentAddressLine2(e.target.value)}                
+                onChange={(e) => setCurrentAddressLine2(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -141,7 +146,7 @@ function Edit(props) {
                 id="currentAddressCity"
                 type="text"
                 className="form-control"
-                onChange={(e) => setCurrentAddressCity(e.target.value)}                
+                onChange={(e) => setCurrentAddressCity(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -150,7 +155,7 @@ function Edit(props) {
                 id="currentAddressState"
                 type="text"
                 className="form-control"
-                onChange={(e) => setCurrentAddressState(e.target.value)}                
+                onChange={(e) => setCurrentAddressState(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -159,7 +164,7 @@ function Edit(props) {
                 id="currentAddressZip"
                 type="text"
                 className="form-control"
-                onChange={(e) => setCurrentAddressZip(e.target.value)}                
+                onChange={(e) => setCurrentAddressZip(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -168,18 +173,19 @@ function Edit(props) {
                 id="currentAddressAddedDate"
                 type="date"
                 className="form-control"
-                onChange={(e) => setCurrentAddressAddedDate(e.target.value)}                
+                onChange={(e) => setCurrentAddressAddedDate(e.target.value)}
               />
             </div>
           </div>
-          <div className="form-row">Previous Address
+          <div className="form-row">
+            Previous Address
             <div className="form-group col-md-5">
               <label for="previousAddressLine1">Address Line1: </label>
               <input
                 id="previousAddressLine1"
                 type="text"
                 className="form-control"
-                onChange={(e) => setPreviousAddressLine1(e.target.value)}                
+                onChange={(e) => setPreviousAddressLine1(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -188,7 +194,7 @@ function Edit(props) {
                 id="previousAddressLine2"
                 type="text"
                 className="form-control"
-                onChange={(e) => setPreviousAddressLine2(e.target.value)}                
+                onChange={(e) => setPreviousAddressLine2(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -197,7 +203,7 @@ function Edit(props) {
                 id="previousAddressCity"
                 type="text"
                 className="form-control"
-                onChange={(e) => setPreviousAddressCity(e.target.value)}                
+                onChange={(e) => setPreviousAddressCity(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -206,7 +212,7 @@ function Edit(props) {
                 id="previousAddressState"
                 type="text"
                 className="form-control"
-                onChange={(e) => setPreviousAddressState(e.target.value)}                
+                onChange={(e) => setPreviousAddressState(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -215,7 +221,7 @@ function Edit(props) {
                 id="previousAddressZip"
                 type="text"
                 className="form-control"
-                onChange={(e) => setPreviousAddresszip(e.target.value)}                
+                onChange={(e) => setPreviousAddresszip(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -224,18 +230,19 @@ function Edit(props) {
                 id="previousAddressAddedDate"
                 type="date"
                 className="form-control"
-                onChange={(e) => setPreviousAddressAddedDate(e.target.value)}                
+                onChange={(e) => setPreviousAddressAddedDate(e.target.value)}
               />
             </div>
           </div>
-          <div className="form-row">Contact Info
+          <div className="form-row">
+            Contact Info
             <div className="form-group col-md-5">
               <label for="email">EMail: </label>
               <input
                 id="email"
                 type="email"
                 className="form-control"
-                onChange={(e) => setEMail(e.target.value)}                
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -257,7 +264,9 @@ function Edit(props) {
               />
             </div>
             <div className="form-group col-md-5">
-              <label for="secondaryCustomerContact">Secondary Customer Contact: </label>
+              <label for="secondaryCustomerContact">
+                Secondary Customer Contact:{" "}
+              </label>
               <input
                 id="secondaryCustomerContact"
                 type="text"
@@ -273,7 +282,7 @@ function Edit(props) {
                 id="serviceStartDate"
                 type="date"
                 className="form-control"
-                onChange={(e) => setServiceStartDate(e.target.value)}                
+                onChange={(e) => setServiceStartDate(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -282,7 +291,7 @@ function Edit(props) {
                 id="products"
                 type="text"
                 className="form-control"
-                onChange={(e) => setProducts(e.target.value)}                
+                onChange={(e) => setProducts(e.target.value)}
               />
             </div>
             <div className="form-group col-md-5">
@@ -291,7 +300,7 @@ function Edit(props) {
                 id="activeCustomer"
                 type="text"
                 className="form-control"
-                onChange={(e) => setActiveCustomer(e.target.value)}                
+                onChange={(e) => setActiveCustomer(e.target.value)}
               />
             </div>
           </div>
@@ -304,7 +313,7 @@ function Edit(props) {
           </div>
         </form>
       </div>
-      </>
+    </>
   );
 }
 

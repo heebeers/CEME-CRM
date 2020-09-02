@@ -28,16 +28,10 @@ const Header = () => {
           </Dropdown.Menu>
         </Dropdown>
         <div>
-          <Icon
-            circular
-            color="white"
-            name="bell"
-            style={{ marginTop: "5px" }}
-          />
+          <Icon circular name="bell" style={{ marginTop: "5px" }} />
         </div>
         <Icon
           circular
-          color="white"
           name="user"
           style={{ marginTop: "5px", marginLeft: "2px" }}
         />

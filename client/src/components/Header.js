@@ -8,6 +8,29 @@ import {
   Icon,
 } from "semantic-ui-react";
 
+const friendOptions = [
+  {
+    key: "Jenny Hess",
+    text: "Jenny Hess",
+    value: "Jenny Hess",
+  },
+  {
+    key: "Elliot Fu",
+    text: "Elliot Fu",
+    value: "Elliot Fu",
+  },
+  {
+    key: "Stevie Feliciano",
+    text: "Stevie Feliciano",
+    value: "Stevie Feliciano",
+  },
+  {
+    key: "Christian",
+    text: "Christian",
+    value: "Christian",
+  },
+];
+
 const Header = () => {
   return (
     <Menu fixed="top" borderless style={{ background: "skyBlue" }}>
@@ -34,6 +57,11 @@ const Header = () => {
           circular
           name="user"
           style={{ marginTop: "5px", marginLeft: "2px" }}
+        />
+        <Dropdown
+          inline
+          options={friendOptions}
+          defaultValue={friendOptions[0].value}
         />
       </Container>
     </Menu>

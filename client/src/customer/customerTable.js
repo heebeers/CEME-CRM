@@ -34,7 +34,7 @@ const CustomerTable = ({ customers }) => {
             <Table.Cell>{customer.products}</Table.Cell>
             <Table.Cell>
               <Link
-                to={"/edit/id=" + customer._links.self.href.substring(32)}
+                to={"/edit?id=" + customer._links.self.href.substring(32)}
                 className="nav-link"
               >
                 Edit Customer
@@ -43,7 +43,7 @@ const CustomerTable = ({ customers }) => {
             <Table.Cell>
               <Link
                 to={
-                  "/showInteractions/id=" +
+                  "/showInteractions?id=" +
                   customer._links.self.href.substring(32)
                 }
                 className="nav-link"
@@ -54,6 +54,7 @@ const CustomerTable = ({ customers }) => {
           </Table.Row>
         ))}
       </Table.Body>
+     
     </Table>
   );
 };

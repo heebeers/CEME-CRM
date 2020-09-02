@@ -2,9 +2,17 @@
 
 
 // import the various actions from actions.js which are used in the reducer
+import { ADD_INTERACTION_BEGIN,
+  ADD_INTERACTION_SUCCESS,
+  ADD_INTERACTION_FAILURE } from '../actions/actions';
+
 import { FETCH_INTERACTIONS_BEGIN,
   FETCH_INTERACTIONS_SUCCESS,
   FETCH_INTERACTIONS_FAILURE } from '../actions/actions';
+
+import { GETALL_INTERACTIONS_BEGIN,
+    GETALL_INTERACTIONS_SUCCESS,
+    GETALL_INTERACTIONS_FAILURE } from '../actions/actions';
 
 import { FETCH_CUSTOMERS_BEGIN,
  FETCH_CUSTOMERS_SUCCESS,
@@ -33,6 +41,25 @@ import { FETCH_CUSTOMERS_BEGIN,
   // the reducer is here. It is going to return different states depending upon the action
  export default  function customersReducer(state = initialState, action) {
     switch (action.type) {
+      case ADD_INTERACTION_BEGIN:
+        return {
+          ...state,
+          loading:true,
+          error: null
+        }
+      case ADD_INTERACTION_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          interactions: action.payload.interactions
+        };
+      case ADD_INTERACTION_FAILURE:
+        return {
+          ...state,
+          loading: false,
+          error: action.payload.error,
+          interactions: []
+        };
       case FETCH_CUSTOMERS_BEGIN:
         return {
           ...state,
@@ -119,6 +146,25 @@ import { FETCH_CUSTOMERS_BEGIN,
               interactions: action.payload.interactions
             };
           case FETCH_INTERACTIONS_FAILURE:
+            return {
+              ...state,
+              loading: false,
+              error: action.payload.error,
+              interactions: []
+            };
+            case GETALL_INTERACTIONS_BEGIN:
+            return {
+              ...state,
+              loading:true,
+              error: null
+            }
+          case GETALL_INTERACTIONS_SUCCESS:
+            return {
+              ...state,
+              loading: false,
+              interactions: action.payload.interactions
+            };
+          case GETALL_INTERACTIONS_FAILURE:
             return {
               ...state,
               loading: false,

@@ -1,41 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
-import CustomerTable from "./CustomerTable";
 import Create from "./customer/create";
 import Edit from "./customer/edit";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { fetchCUSTOMERs } from "./actions/actions";
 import { Container } from "semantic-ui-react";
-
-// needed for functional components
-import { useSelector, useDispatch } from "react-redux";
-import ShowInteractions from "./interactions/ShowInteractions";
+import CreateInteraction from "./interactions/createInteraction";
+import CustomerList from "./customer/customerList";
+import InteractionList from "./interactions/interactionsList";
 
 function App(props) {
-  const customerList = useSelector((state) => state);
-
-  const { customers, loading, error } = customerList;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCUSTOMERs());
-    return () => {
-      //
-    };
-  }, []);
-
+  
   return (
-    <>
-      {loading ? (
-        <div>Loading...</div>
-      ) : error ? (
-        <div>{error}</div>
-      ) : (
-        <Router>
+      <Router>
           <Container className="container">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-              <Link to={"/"} className="navbar-brand">
+              <Link to={"/listCustomers"} className="navbar-brand">
                 List Customers
+              </Link><br />
+              <Link to={"/listInteractions"} className="navbar-brand">
+                List Interactions
               </Link>
               <div
                 className="collapse navbar-collapse"
@@ -47,37 +30,31 @@ function App(props) {
                       Create Customer
                     </Link>
                   </li>
-                  {/* <li className="nav-item">
-                  <Link to={"/edit/id=00000000c3f2e4605ac7635b"} className="nav-link">
-                    Edit Customer
-                  </Link>
-                </li> */}
                 </ul>
               </div>
             </nav>{" "}
             <br />
             <h1>Customer Manager</h1> <br />
             <Switch>
+              <Route path="/listCustomers" component={CustomerList} />
+              <Route path="/listInteractions" component={InteractionList} />
               <Route path="/create" component={Create} />
-              <Route
-                path="/edit/id=00000000c3f2e4605ac7635b"
+              <Route exact
+                path="/edit"
                 component={Edit}
               />
-              <Route
-                path="/showInteractions/id=00000000c3f2e4605ac7635b"
-                component={ShowInteractions}
+              <Route exact
+                path="/showInteractions"
+                component={InteractionList}
+              />
+              <Route exact
+                path="/addInteraction"
+                component={CreateInteraction}
               />
               <Route exact path="/index" component={App} />
             </Switch>
           </Container>
-          <Container className="App">
-            <h1>Here are my Customers!</h1>
-            <CustomerTable customers={customers} />
-          </Container>
         </Router>
-      )}
-      ;
-    </>
   );
 }
 

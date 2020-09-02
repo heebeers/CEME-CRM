@@ -6,6 +6,7 @@ import Edit from "./customer/edit";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { fetchCUSTOMERs } from "./actions/actions";
 import { Container } from "semantic-ui-react";
+import Header from "./components/Header";
 
 // needed for functional components
 import { useSelector, useDispatch } from "react-redux";
@@ -32,7 +33,8 @@ function App(props) {
         <div>{error}</div>
       ) : (
         <Router>
-          <Container className="container">
+          <Header />
+          <Container className="container" style={{ marginTop: "7em" }}>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
               <Link to={"/"} className="navbar-brand">
                 List Customers

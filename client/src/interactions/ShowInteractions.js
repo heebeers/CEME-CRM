@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {fetchINTERACTION} from '../actions/actions';
 import { useSelector, useDispatch } from "react-redux";
+import { Container } from "semantic-ui-react";
 
 
 function ShowInteractions (props) {
@@ -15,6 +16,13 @@ function ShowInteractions (props) {
     }, []);
 
     return () => (
+      <>
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>{error}</div>
+      ) : (<Container className="App">
+      <h1>Here are my Interactions!</h1>
         <table border="1" width="80%">
         <thead>
           <tr>
@@ -42,6 +50,11 @@ function ShowInteractions (props) {
 
           </tbody>
       </table>
+      </Container>
+      )}
+      ;
+    
+      </>
    );
 }
 export default ShowInteractions;

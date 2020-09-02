@@ -5,6 +5,8 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 //import rootReducer from './../reducer/index';
 import customersReducer from "../reducer/customerReducer";
+import { composeWithDevTools } from "redux-devtools-extension";
+
 
 // these constants can be used as the names of the actions 
 // so you minimise using the wrong string
@@ -28,6 +30,47 @@ export const FETCH_INTERACTIONS_BEGIN   = 'FETCH_INTERACTIONS_BEGIN';
 export const FETCH_INTERACTIONS_SUCCESS = 'FETCH_INTERACTIONS_SUCCESS';
 export const FETCH_INTERACTIONS_FAILURE = 'FETCH_INTERACTIONS_FAILURE';
 
+export const GETALL_INTERACTIONS_BEGIN   = 'GETALL_INTERACTIONS_BEGIN';
+export const GETALL_INTERACTIONS_SUCCESS = 'GETALL_INTERACTIONS_SUCCESS';
+export const GETALL_INTERACTIONS_FAILURE = 'GETALL_INTERACTIONS_FAILURE';
+
+export const ADD_INTERACTION_BEGIN   = 'ADD_INTERACTION_BEGIN';
+export const ADD_INTERACTION_SUCCESS = 'ADD_INTERACTION_SUCCESS';
+export const ADD_INTERACTION_FAILURE = 'ADD_INTERACTION_FAILURE';
+
+// Add Interaction
+export const addINTERACTIONBegin = () => ({
+  type: ADD_CUSTOMER_BEGIN
+});
+
+export const addINTERACTIONSuccess = customers => ({
+  type: ADD_CUSTOMER_SUCCESS,
+  payload: { message: "success" }
+});
+
+export const addINTERACTIONFailure = error => ({
+  type: ADD_CUSTOMER_FAILURE,
+  payload: { error }
+});
+
+// Get All Interactions
+
+export const getallINTERACTIONsBegin = () => ({
+  type: GETALL_INTERACTIONS_BEGIN
+  
+});
+
+export const getallINTERACTIONsSuccess = interactions => ({
+  type: GETALL_INTERACTIONS_SUCCESS,
+  payload: { interactions }
+});
+
+export const getallINTERACTIONsFailure = error => ({
+  type: GETALL_INTERACTIONS_FAILURE,
+  payload: { error }
+});
+
+// Fetch Interactions by Customer Id
 export const fetchINTERACTIONsBegin = () => ({
   type: FETCH_INTERACTIONS_BEGIN
   
@@ -43,6 +86,7 @@ export const fetchINTERACTIONsFailure = error => ({
   payload: { error }
 });
 
+// Fetch Customers
 export const fetchCUSTOMERsBegin = () => ({
   type: FETCH_CUSTOMERS_BEGIN
   
@@ -149,8 +193,10 @@ export function addCUSTOMER(customer) {
 export function updateCUSTOMER(customer) {
   return dispatch => {
     dispatch(updateCUSTOMERBegin());
+    console.log(customer._links.self.href.substring(32));
     axios
-    .patch("http://localhost:8080/customers", customer)
+    //.post("http://localhost:8080/customers", customer)
+    .put("http://localhost:8080/customers/" + customer._links.self.href.substring(32), customer)
     .then(response => {
       console.log(response.data);
       dispatch(updateCUSTOMERSuccess(response.data));
@@ -165,10 +211,36 @@ export function fetchINTERACTION(customerId) {
     axios
     .get("http://localhost:8080/interactions/search/findByCustomerId?id="+ customerId)
     .then(response => {
-      console.log(response.data._embedded.interactions);
-      dispatch(fetchINTERACTIONsSuccess(response.data_embedded.interactions));
+      console.log(response.data);
+      dispatch(fetchINTERACTIONsSuccess(response.data._embedded.interactions));
     })
     .catch(error => dispatch(fetchINTERACTIONsFailure(error)));
+  }
+}
+
+export function getallINTERACTIONs() {
+  return dispatch => {
+    dispatch(getallINTERACTIONsBegin());
+    axios
+    .get("http://localhost:8080/interactions")
+    .then(response => {
+      console.log(response.data);
+      dispatch(getallINTERACTIONsSuccess(response.data._embedded.interactions));
+    })
+    .catch(error => dispatch(getallINTERACTIONsFailure(error)));
+  }
+}
+
+export function addINTERACTION(interaction) {
+  return dispatch => {
+    dispatch(addINTERACTIONBegin());
+    axios
+    .post("http://localhost:8080/interactions", interaction)
+    .then(response => {
+      console.log(response.data);
+      dispatch(addINTERACTIONSuccess(response.data));
+    })
+    .catch(error => dispatch(addINTERACTIONFailure(error)));
   }
 }
 
@@ -176,8 +248,12 @@ const initialState = {
   customers: [],
   customer: {},
   interactions: [],
+  interaction: {}
 }
 
-export const store = createStore(customersReducer, initialState, applyMiddleware(thunk));
+export const store = createStore(customersReducer, initialState, composeWithDevTools(
+  applyMiddleware(thunk),
+  // other store enhancers if any
+));
 
 

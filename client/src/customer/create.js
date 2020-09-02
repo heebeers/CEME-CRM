@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { connect } from 'react-redux';
-import {addCUSTOMER, store, ADD_CUSTOMER_BEGIN} from './../actions/actions';
+import { connect } from "react-redux";
+import { addCUSTOMER, store, ADD_CUSTOMER_BEGIN } from "./../actions/actions";
+import Button from "@material-ui/core/Button";
+import { Formik, Form, Field } from "formik";
+import { TextField } from "formik-material-ui";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
 
 import { useSelector, useDispatch } from "react-redux";
 
-
 function Create(props) {
-
   const customerState = useSelector((state) => state);
-  const {customer, loading, error} = customerState;
+  const { customer, loading, error } = customerState;
   const dispatch = useDispatch();
-
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -20,11 +26,11 @@ function Create(props) {
   const [currentAddressLine2, setCurrentAddressLine2] = useState("");
   const [currentAddressCity, setCurrentAddressCity] = useState("");
   const [currentAddressState, setCurrentAddressState] = useState("");
-  const [currentAddresszip, setCurrentAddressZip] = useState(""); 
+  const [currentAddresszip, setCurrentAddressZip] = useState("");
   const [currentAddressAddedDate, setCurrentAddressAddedDate] = useState("");
   const [previousAddressLine1, setPreviousAddressLine1] = useState("");
-  const [previousAddressLine2, setPreviousAddressLine2] = useState(""); 
-  const [previousAddressCity, setPreviousAddressCity] = useState(""); 
+  const [previousAddressLine2, setPreviousAddressLine2] = useState("");
+  const [previousAddressCity, setPreviousAddressCity] = useState("");
   const [previousAddressState, setPreviousAddressState] = useState("");
   const [previousAddresszip, setPreviousAddresszip] = useState("");
   const [previousAddressAddedDate, setPreviousAddressAddedDate] = useState("");
@@ -37,7 +43,7 @@ function Create(props) {
   const [products, setProducts] = useState("");
   const [activeCustomer, setActiveCustomer] = useState("");
 
-  const submitHandler = async(e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     // this is empty
     customer.firstName = firstName;
@@ -67,241 +73,309 @@ function Create(props) {
     dispatch(addCUSTOMER(customer));
   };
 
-  return (
-    <div className ="container">
-      <div style={{ marginTop: 10 }}>
-        <h3>Add New Customer</h3>
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
 
-        <form onSubmit={submitHandler} autoComplete="off">
-          <div className="form-row">
-            <div className="form-group col-md-5">
-              <label for="firstName">First Name: </label>
-              <input
-                id="firstName"
-                type="text"
-                className="form-control"
-                onChange={(e) => setFirstName(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="middleName">Middle Name: </label>
-              <input
-                id="middleName"
-                type="text"
-                className="form-control"
-                onChange={(e) => setMiddleName(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="lastName">Last Name: </label>
-              <input
-                id="lastName"
-                type="text"
-                className="form-control"
-                onChange={(e) => setLastName(e.target.value)}                
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group col-md-5">
-              <label for="dateOfBirth">Date Of Birth</label>
-              <input
-                id="dateOfBirth"
-                type="date"
-                className="form-control"
-                onChange={(e) => setDateOfBirth(e.target.value)}                
-              />
-            </div>
-          </div>
-          <div className="form-row">Current Address
-            <div className="form-group col-md-5">
-              <label for="currentAddressLine1">Address Line1: </label>
-              <input
-                id="currentAddressLine1"
-                type="text"
-                className="form-control"
-                onChange={(e) => setCurrentAddressLine1(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="currentAddressLine2">Address Line2: </label>
-              <input
-                id="currentAddressLine1"
-                type="text"
-                className="form-control"
-                onChange={(e) => setCurrentAddressLine2(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="currentAddressCity">City: </label>
-              <input
-                id="currentAddressCity"
-                type="text"
-                className="form-control"
-                onChange={(e) => setCurrentAddressCity(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="currentAddressState">State: </label>
-              <input
-                id="currentAddressState"
-                type="text"
-                className="form-control"
-                onChange={(e) => setCurrentAddressState(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="currentAddressZip">Zip: </label>
-              <input
-                id="currentAddressZip"
-                type="text"
-                className="form-control"
-                onChange={(e) => setCurrentAddressZip(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
+  return (
+    <div className="container">
+      <div style={{ marginTop: 10 }}>
+        <Formik
+          initialValues={{
+            firstName: "",
+            middleName: "",
+            lastName: "",
+            dateOfBirth: new Date(),
+            email: "",
+            currentAddressLine1: "",
+            currentAddressLine2: "",
+            setCurrentAddressCity: "",
+            currentAddressState: "",
+            currentAddresszip: "",
+          }}
+          validate={(values) => {
+            const errors: Partial<Values> = {};
+            if (!values.email) {
+              errors.email = "Required";
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+            ) {
+              errors.email = "Invalid email address";
+            }
+            return errors;
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              setSubmitting(false);
+              alert(JSON.stringify(values, null, 2));
+            }, 500);
+          }}
+        >
+          {({ submitForm, isSubmitting }) => (
+            <Form onSubmit={submitHandler} autoComplete="off">
+              <div className="form-row">
+                <div className="form-group">
+                  <Field
+                    component={TextField}
+                    id="firstName"
+                    name="First Name"
+                    label="First Name"
+                    className="form-control"
+                    onChange={(e) => setFirstName(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <Field
+                    component={TextField}
+                    id="middleName"
+                    name="Middle Name"
+                    label="Middle Name"
+                    className="form-control"
+                    onChange={(e) => setMiddleName(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <Field
+                    component={TextField}
+                    id="lastName"
+                    name="Last Name"
+                    label="Last Name"
+                    className="form-control"
+                    onChange={(e) => setLastName(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <KeyboardDatePicker
+                    margin="normal"
+                    id="dateOfBirth"
+                    label="Date of Birth"
+                    format="MM/dd/yyyy"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                      "aria-label": "change date",
+                    }}
+                  />
+                </MuiPickersUtilsProvider>
+              </div>
+              <div className="form-group">
+                <Field
+                  component={TextField}
+                  id="currentAddressLine1"
+                  name="Current Address Line 1"
+                  label="Current Address Line 1"
+                  className="form-control"
+                  onChange={(e) => setCurrentAddressLine1(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <Field
+                  component={TextField}
+                  id="currentAddressLine 2"
+                  name="Current Address Line 2"
+                  label="Current Address Line 2"
+                  className="form-control"
+                  onChange={(e) => setCurrentAddressLine2(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <Field
+                  component={TextField}
+                  id="currentAddressCity"
+                  name="Current Address City"
+                  label="Current Address City"
+                  className="form-control"
+                  onChange={(e) => setCurrentAddressCity(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <Field
+                  component={TextField}
+                  id="currentAddressState"
+                  name="Current Address State"
+                  label="Current Address State"
+                  className="form-control"
+                  onChange={(e) => setCurrentAddressState(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <Field
+                  component={TextField}
+                  id="currentAddressZip"
+                  name="Current Address Zip"
+                  label="Current Address Zip"
+                  className="form-control"
+                  onChange={(e) => setCurrentAddressZip(e.target.value)}
+                  required
+                />
+              </div>
               <label for="currentAddressAddedDate">Address Added Date: </label>
               <input
                 id="currentAddressAddedDate"
                 type="date"
                 className="form-control"
-                onChange={(e) => setCurrentAddressAddedDate(e.target.value)}                
+                onChange={(e) => setCurrentAddressAddedDate(e.target.value)}
               />
-            </div>
-          </div>
-          <div className="form-row">Previous Address
-            <div className="form-group col-md-5">
-              <label for="previousAddressLine1">Address Line1: </label>
-              <input
-                id="previousAddressLine1"
-                type="text"
-                className="form-control"
-                onChange={(e) => setPreviousAddressLine1(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="previousAddressLine2">Address Line2: </label>
-              <input
-                id="previousAddressLine2"
-                type="text"
-                className="form-control"
-                onChange={(e) => setPreviousAddressLine2(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="previousAddressCity">City: </label>
-              <input
-                id="previousAddressCity"
-                type="text"
-                className="form-control"
-                onChange={(e) => setPreviousAddressCity(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="previousAddressState">State: </label>
-              <input
-                id="previousAddressState"
-                type="text"
-                className="form-control"
-                onChange={(e) => setPreviousAddressState(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="previousAddressZip">Zip: </label>
-              <input
-                id="previousAddressZip"
-                type="text"
-                className="form-control"
-                onChange={(e) => setPreviousAddresszip(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="previousAddressAddedDate">Address Added Date: </label>
-              <input
-                id="previousAddressAddedDate"
-                type="date"
-                className="form-control"
-                onChange={(e) => setPreviousAddressAddedDate(e.target.value)}                
-              />
-            </div>
-          </div>
-          <div className="form-row">Contact Info
-            <div className="form-group col-md-5">
-              <label for="email">EMail: </label>
-              <input
-                id="email"
-                type="email"
-                className="form-control"
-                onChange={(e) => setEMail(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="customerPhone">Phone: </label>
-              <input
-                id="customerPhone"
-                type="text"
-                className="form-control"
-                onChange={(e) => setCustomerPhone(e.target.value)}
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="preferredContact">Preferred Contact: </label>
-              <input
-                id="preferredContact"
-                type="text"
-                className="form-control"
-                onChange={(e) => setPreferredContact(e.target.value)}
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="secondaryCustomerContact">Secondary Customer Contact: </label>
-              <input
-                id="secondaryCustomerContact"
-                type="text"
-                className="form-control"
-                onChange={(e) => setSecondaryCustomerContact(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group col-md-5">
-              <label for="serviceStartDate">Service Start Date: </label>
-              <input
-                id="serviceStartDate"
-                type="date"
-                className="form-control"
-                onChange={(e) => setServiceStartDate(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="products">Products: </label>
-              <input
-                id="products"
-                type="text"
-                className="form-control"
-                onChange={(e) => setProducts(e.target.value)}                
-              />
-            </div>
-            <div className="form-group col-md-5">
-              <label for="activeCustomer">Active Customer: </label>
-              <input
-                id="activeCustomer"
-                type="text"
-                className="form-control"
-                onChange={(e) => setActiveCustomer(e.target.value)}                
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <input
-              type="submit"
-              value="Create Customer"
-              className="btn btn-primary"
-            />
-          </div>
-        </form>
+              <div className="form-row">
+                Previous Address
+                <div className="form-group">
+                  <label for="previousAddressLine1">Address Line1: </label>
+                  <input
+                    id="previousAddressLine1"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setPreviousAddressLine1(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="previousAddressLine2">Address Line2: </label>
+                  <input
+                    id="previousAddressLine2"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setPreviousAddressLine2(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="previousAddressCity">City: </label>
+                  <input
+                    id="previousAddressCity"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setPreviousAddressCity(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="previousAddressState">State: </label>
+                  <input
+                    id="previousAddressState"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setPreviousAddressState(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="previousAddressZip">Zip: </label>
+                  <input
+                    id="previousAddressZip"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setPreviousAddresszip(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="previousAddressAddedDate">
+                    Address Added Date:{" "}
+                  </label>
+                  <input
+                    id="previousAddressAddedDate"
+                    type="date"
+                    className="form-control"
+                    onChange={(e) =>
+                      setPreviousAddressAddedDate(e.target.value)
+                    }
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                Contact Info
+                <div className="form-group">
+                  <Field
+                    component={TextField}
+                    name="email"
+                    type="email"
+                    label="Email"
+                  />
+                </div>
+                <div className="form-group">
+                  <Field
+                    component={TextField}
+                    id="customerPhone"
+                    name="Phone"
+                    label="Phone"
+                    className="form-control"
+                    onChange={(e) => setCustomerPhone(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="preferredContact">Preferred Contact: </label>
+                  <input
+                    id="preferredContact"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setPreferredContact(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="secondaryCustomerContact">
+                    Secondary Customer Contact:{" "}
+                  </label>
+                  <input
+                    id="secondaryCustomerContact"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) =>
+                      setSecondaryCustomerContact(e.target.value)
+                    }
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label for="serviceStartDate">Service Start Date: </label>
+                  <input
+                    id="serviceStartDate"
+                    type="date"
+                    className="form-control"
+                    onChange={(e) => setServiceStartDate(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="products">Products: </label>
+                  <input
+                    id="products"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setProducts(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="activeCustomer">Active Customer: </label>
+                  <input
+                    id="activeCustomer"
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setActiveCustomer(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="raised"
+                  color="primary"
+                  value="Create Customer"
+                >
+                  Submit
+                </Button>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
-      </div>
+    </div>
   );
 }
 

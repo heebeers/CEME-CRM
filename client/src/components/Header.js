@@ -13,7 +13,7 @@ const Header = () => {
     <Menu fixed="top" borderless style={{ background: "skyBlue" }}>
       <Container>
         <Menu.Item as="a" header>
-          Out of the Box CRM
+          Ambitious Ventures CRM
         </Menu.Item>
         <Dropdown item simple text="Customers">
           <Dropdown.Menu>

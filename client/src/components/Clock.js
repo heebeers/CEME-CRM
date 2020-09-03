@@ -28,7 +28,7 @@ const Clock = () => {
   return (
     <Message style={{ marginTop: "3em" }}>
       <Message.Header>Before your call, check the time.</Message.Header>
-      <Grid columns={3} style={{ marginTop: "10px" }}>
+      <Grid stackable columns={3} style={{ marginTop: "10px" }}>
         <Grid.Row>
           <Grid.Column>
             <Header as="h4">

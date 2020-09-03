@@ -8,6 +8,7 @@ import {
   Grid,
   Container,
   Form,
+  Divider,
   GridColumn,
 } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
@@ -118,8 +119,9 @@ function Create(props) {
                   onChange={(e) => (event, data) => setDateOfBirth(data.value)}
                 />
               </Form.Group>
+              <Divider />
               <h4>Current Address</h4>
-              <Form.Group>
+              <Form.Group widths="equal">
                 <Form.Input
                   fluid
                   label="Address Line 1"
@@ -136,7 +138,8 @@ function Create(props) {
                   className="form-control"
                   onChange={(e) => setCurrentAddressLine2(e.target.value)}
                 />
-
+              </Form.Group>
+              <Form.Group widths="equal">
                 <Form.Input
                   fluid
                   label="City"
@@ -168,8 +171,9 @@ function Create(props) {
                     setCurrentAddressAddedDate(data.value)}
                 />
               </Form.Group>
+              <Divider />
               <h4>Previous Address</h4>
-              <Form.Group>
+              <Form.Group widths="equal">
                 <Form.Input
                   fluid
                   label="Address Line 1"
@@ -186,6 +190,8 @@ function Create(props) {
                   className="form-control"
                   onChange={(e) => setPreviousAddressLine2(e.target.value)}
                 />
+              </Form.Group>
+              <Form.Group widths="equal">
                 <Form.Input
                   fluid
                   label="City"
@@ -217,6 +223,7 @@ function Create(props) {
                     setPreviousAddressAddedDate(data.value)}
                 />
               </Form.Group>
+              <Divider fitted />
               <h4>Contact Info</h4>
               <Form.Group widths="equal">
                 <Form.Input
@@ -251,6 +258,8 @@ function Create(props) {
                   className="form-control"
                   onChange={(e) => setSecondaryCustomerContact(e.target.value)}
                 />
+              </Form.Group>
+              <Form.Group widths="equal">
                 <SemanticDatepicker
                   id="serviceStartDate"
                   label="Service Start Date"

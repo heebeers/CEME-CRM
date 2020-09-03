@@ -15,7 +15,6 @@ const CustomerTable = ({ customers }) => {
             <Table.HeaderCell>Email</Table.HeaderCell>
             <Table.HeaderCell>Products</Table.HeaderCell>
             <Table.HeaderCell>Customer Action</Table.HeaderCell>
-            <Table.HeaderCell>Interactions</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -49,8 +48,6 @@ const CustomerTable = ({ customers }) => {
                   content={`Delete ${customer.firstName} ${customer.firstName}`}
                   size="mini"
                 />
-              </Table.Cell>
-              <Table.Cell>
                 <Link
                   to={
                     "/showInteractions?id=" +
@@ -58,7 +55,11 @@ const CustomerTable = ({ customers }) => {
                   }
                   className="nav-link"
                 >
-                  Show Interactions
+                  <Popup
+                    trigger={<Icon name="conversation" />}
+                    content={`Interactions with ${customer.firstName} ${customer.firstName}`}
+                    size="mini"
+                  />
                 </Link>
               </Table.Cell>
             </Table.Row>

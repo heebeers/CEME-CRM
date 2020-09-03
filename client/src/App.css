@@ -14,3 +14,16 @@
 tr:hover {
   background: #d6f1f8b7;
 }
+
+.legal {
+  font-style: italic;
+}
+
+#Footer a.item a {
+  color: black !important;
+}
+#Footer a.item a:hover,
+#Footer a {
+  color: #333 !important;
+  font-weight: bold;
+}

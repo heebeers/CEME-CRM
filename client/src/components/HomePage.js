@@ -9,9 +9,8 @@ function HomePage(props) {
     toast({
       type: "info",
       icon: "calendar alternate outline",
-      title: "Today, you have the following",
-      description:
-        "This is a Semantic UI toast wich waits 5 seconds before closing",
+      title: "Today's Agenda",
+      description: "4 Calls to Make, 3 Meetings",
       animation: "bounce",
       time: 0,
     });

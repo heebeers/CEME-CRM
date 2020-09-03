@@ -27,20 +27,7 @@ const Header = () => {
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown item simple text="Interactions">
-          <Dropdown.Menu>
-            <Dropdown.Item>
-              <Link to={"/listInteractions"} className="navbar-brand">
-                View Customer Interactions
-              </Link>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <Link to={"/addInteraction?id=null"} className="navbar-brand">
-                Add Customer Interaction
-              </Link>
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+
         <div>
           <Icon circular name="bell" style={{ marginTop: "5px" }} />
         </div>

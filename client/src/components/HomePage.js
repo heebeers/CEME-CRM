@@ -1,10 +1,29 @@
 import React from "react";
+import { SemanticToastContainer, toast } from "react-semantic-toasts";
+import "react-semantic-toasts/styles/react-semantic-alert.css";
 
 import { Container } from "semantic-ui-react";
 
 function HomePage(props) {
+  setTimeout(() => {
+    toast({
+      type: "info",
+      icon: "calendar alternate outline",
+      title: "Today, you have the following",
+      description:
+        "This is a Semantic UI toast wich waits 5 seconds before closing",
+      animation: "bounce",
+      time: 0,
+    });
+  }, 0);
+
   return (
     <Container text className="container" style={{ marginTop: "7em" }}>
+      <SemanticToastContainer
+        type="warning"
+        title="The header of the toast"
+        position="top-right"
+      />
       <h3>Good afternoon.</h3>
       <p>
         Seitan eu try-hard la croix you probably haven't heard of them locavore.

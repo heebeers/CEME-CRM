@@ -38,9 +38,9 @@ function InteractionList(props) {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Interaction Date</Table.HeaderCell>
-                <Table.HeaderCell>Interaction Follow up Type</Table.HeaderCell>
-                <Table.HeaderCell>Interaction Notes</Table.HeaderCell>
                 <Table.HeaderCell>Interaction Type</Table.HeaderCell>
+                <Table.HeaderCell>Interaction Notes</Table.HeaderCell>
+                <Table.HeaderCell>Interaction Follow up Type</Table.HeaderCell>
                 <Table.HeaderCell>Interaction Follow up Date</Table.HeaderCell>
                 <Table.HeaderCell>Priority</Table.HeaderCell>
                 <Table.HeaderCell>Actions</Table.HeaderCell>
@@ -49,10 +49,10 @@ function InteractionList(props) {
             <Table.Body>
               {interactions.map((interaction) => (
                 <Table.Row>
-                  <Table.Cell>{interaction.interactionDate} </Table.Cell>
-                  <Table.Cell>{interaction.interactionFollowUpType}</Table.Cell>
-                  <Table.Cell>{interaction.interactionNotes}</Table.Cell>
+                  <Table.Cell>{interaction.interactionDate}</Table.Cell>
                   <Table.Cell>{interaction.interactionType}</Table.Cell>
+                  <Table.Cell>{interaction.interactionNotes}</Table.Cell>
+                  <Table.Cell>{interaction.interactionFollowUpType}</Table.Cell>
                   <Table.Cell>{interaction.interactionFollowUpDate}</Table.Cell>
                   <Table.Cell>{interaction.priorityLevel}</Table.Cell>
                   <Table.Cell>
@@ -63,6 +63,16 @@ function InteractionList(props) {
                   <Popup
                     trigger={<Icon name="edit" />}
                     content={`Edit Interactions`}
+                    size="mini"
+                  />
+                </Link>
+                <Link
+                  to={"/deleteInteraction?id=" + interaction._links.self.href.substring(35)}
+                  className="nav-link"
+                >
+                  <Popup
+                    trigger={<Icon name="trash alternative" />}
+                    content={`Delete Interactions`}
                     size="mini"
                   />
                 </Link>

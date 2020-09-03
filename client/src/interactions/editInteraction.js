@@ -8,6 +8,8 @@ import {
   Container,
   Form,
   GridColumn,
+  TextArea,
+  Divider
 } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
 import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
@@ -58,88 +60,80 @@ function EditInteraction(props) {
   return (
     <>
       <div style={{ marginTop: 10 }}>
-        <h3>Update Interation</h3>
-
-        <form onSubmit={submitHandler}>
-        <div className="form-row">
-              <div className="form-group col-md-5">
-                <Input
+        <h4>Update Interaction</h4>
+        <Form onSubmit={submitHandler} autoComplete="off">
+              <Form.Group widths="equal">
+                <Form.Input
+                  fluid
                   label="Interaction Type"
                   id="interactionType"
                   type="text"
                   className="form-control" defaultValue = {interaction.interactionType}
                   onChange={(e) => setInteractionType(e.target.value)}
+                />                
+                <Form.Input label = "Interaction Date"
+                  id="interactionDate"
+                  type="date"
+                  className="form-control" defaultValue = {interaction.interactionDate}
+                  onChange={(e) => setInteractionDate(e.target.value)}                
                 />
-              </div>           
-              <div className="form-group col-md-5">
-              <label for="interactionDate">Interaction Date</label>
-              <input
-                id="interactionDate"
-                type="date"
-                className="form-control" defaultValue = {interaction.interactionDate}
-                onChange={(e) => setInteractionDate(e.target.value)}                
-              />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-5">
-                <Input
+              </Form.Group>     
+              <Divider/>
+              <Form.Group widths="equal">
+              <Form.Input
+                  fluid
                   label="Interaction Follow-up Type"
                   id="interactionFollowUpType"
                   type="text"
                   className="form-control" defaultValue = {interaction.interactionFollowUpType}
                   onChange={(e) => setInteractionFollowUpType(e.target.value)}
+                /> 
+                <Form.Input label = "Interaction Follow-up Date"
+                  id="interactionFollowUpDate"
+                  type="date"
+                  className="form-control" defaultValue = {interaction.interactionFollowUpDate}
+                  onChange={(e) => setInteractionFollowUpDate(e.target.value)}                
                 />
-              </div>           
-              <div className="form-group col-md-5">
-              <label for="interactionFollowUpDate">Interaction Follow Up Date</label>
-              <input
-                id="interactionFollowUpDate"
-                type="date"
-                className="form-control" defaultValue = {interaction.interactionFollowUpDate}
-                onChange={(e) => setInteractionFollowUpDate(e.target.value)}                
-              />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-5">
-                <Input
+              </Form.Group>     
+              <Divider/>
+              <Form.Group widths="equal">
+              <Form.Input
+                  fluid
                   label="Employee Name"
                   id="employeeId"
                   type="text"
                   className="form-control" defaultValue = {interaction.employeeId}
                   onChange={(e) => setEmployeeId(e.target.value)}
-                />
-              </div>
-              <div className="form-group col-md-5">
-                <Input
+                />              
+                <Form.Input
+                  fluid
                   label="Priority Level"
                   id="priorityLevel"
                   type="text"
-                  className="form-control" defaultValue = {interaction.interactionNotes}
+                  className="form-control" defaultValue = {interaction.priorityLevel}
                   onChange={(e) => setPriorityLevel(e.target.value)}
                 />
-              </div>              
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-5">
-                <Input
+              </Form.Group>              
+              <Divider/>
+              <Form.Group widths="equal">
+                <Form.TextArea
+                 fluid placeholder='Tell us more' style={{ minHeight: 100 }}
                   label="Notes"
                   id="interactionNotes"
                   type="text"
-                  className="form-control"
+                  className="form-control" defaultValue = {interaction.interactionNotes}
                   onChange={(e) => setInteractionNotes(e.target.value)}
                 />
-              </div>
-            </div>
-          <div className="form-group">
-            <input
-              type="submit"
-              value="Update Interaction"
-              className="btn btn-primary"
-            />
-          </div>
-        </form>
+              </Form.Group>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                value="Update Interaction"
+              >
+                Update Interaction
+              </Button>
+              </Form>
       </div>
       </>
   );

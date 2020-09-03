@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import { addINTERACTION, store, ADD_INTERACTION_BEGIN } from "../actions/actions";
-import { Button, Input, Grid, Container } from "semantic-ui-react";
+import { Button, Input, Grid, Container, Form, Divider, TextArea } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
 import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
 
@@ -55,75 +55,71 @@ function CreateInteraction(props) {
     <div className="container">
       <Container>
         <div style={{ marginTop: 10 }}>
-          <h3>Add New Interaction</h3>
-
-          <form onSubmit={submitHandler} autoComplete="off">
-            <div className="form-row">
-              <div className="form-group col-md-5">
-                <Input
+          <h4>Add New Interaction</h4>
+          <Form onSubmit={submitHandler} autoComplete="off">
+              <Form.Group widths="equal">
+                <Form.Input
+                  fluid
                   label="Interaction Type"
                   id="interactionType"
                   type="text"
                   className="form-control"
                   onChange={(e) => setInteractionType(e.target.value)}
+                />                
+                <Form.Input label = "Interaction Date"
+                  id="interactionDate"
+                  type="date"
+                  className="form-control" 
+                  onChange={(e) => setInteractionDate(e.target.value)}                
                 />
-              </div>           
-              <div className="form-group col-md-5">
-                <SemanticDatepicker
-                  label="Interaction Date"
-                  onChange={(e) => (event, data) => setInteractionDate(data.value)}
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-5">
-                <Input
+              </Form.Group>     
+              <Divider/>
+              <Form.Group widths="equal">
+              <Form.Input
+                  fluid
                   label="Interaction Follow-up Type"
                   id="interactionFollowUpType"
                   type="text"
                   className="form-control"
                   onChange={(e) => setInteractionFollowUpType(e.target.value)}
+                /> 
+                <Form.Input label = "Interaction Follow-up Date"
+                  id="interactionFollowUpDate"
+                  type="date"
+                  className="form-control" 
+                  onChange={(e) => setInteractionFollowUpDate(e.target.value)}                
                 />
-              </div>           
-              <div className="form-group col-md-5">
-                <SemanticDatepicker
-                  label="Interaction Follow Up Date"
-                  onChange={(e) => (event, data) => setInteractionFollowUpDate(data.value)}
-                />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-5">
-                <Input
+              </Form.Group>     
+              <Divider/>
+              <Form.Group widths="equal">
+              <Form.Input
+                  fluid
                   label="Employee Name"
                   id="employeeId"
                   type="text"
                   className="form-control"
                   onChange={(e) => setEmployeeId(e.target.value)}
-                />
-              </div>
-              <div className="form-group col-md-5">
-                <Input
+                />              
+                <Form.Input
+                  fluid
                   label="Priority Level"
                   id="priorityLevel"
                   type="text"
                   className="form-control"
                   onChange={(e) => setPriorityLevel(e.target.value)}
                 />
-              </div>              
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-5">
-                <Input
+              </Form.Group>              
+              <Divider/>
+              <Form.Group widths="equal">
+                <Form.TextArea
+                 fluid placeholder='Tell us more' style={{ minHeight: 100 }}
                   label="Notes"
                   id="interactionNotes"
                   type="text"
                   className="form-control"
                   onChange={(e) => setInteractionNotes(e.target.value)}
                 />
-              </div>
-            </div>
-            <div className="form-group">
+              </Form.Group>
               <Button
                 variant="contained"
                 color="primary"
@@ -132,8 +128,7 @@ function CreateInteraction(props) {
               >
                 Create Interaction
               </Button>
-            </div>
-          </form>
+              </Form>
         </div>
       </Container>
     </div>

@@ -9,6 +9,7 @@ import {
   Grid,
   Container,
   Form,
+  Divider,
   GridColumn,
 } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
@@ -117,14 +118,17 @@ function Create(props) {
                   type="text"
                   className="form-control"
                   onChange={(e) => setLastName(e.target.value)}
-                />
-                <SemanticDatepicker
-                  label="Date of Birth"
-                  onChange={(e) => (event, data) => setDateOfBirth(data.value)}
+                />                
+                <Form.Input label = "Date of Birth"
+                  id="dateOfBirth"
+                  type="date"
+                  className="form-control" 
+                  onChange={(e) => setDateOfBirth(e.target.value)}                
                 />
               </Form.Group>
+              <Divider />
               <h4>Current Address</h4>
-              <Form.Group>
+              <Form.Group widths="equal">
                 <Form.Input
                   fluid
                   label="Address Line 1"
@@ -136,12 +140,13 @@ function Create(props) {
                 <Form.Input
                   fluid
                   label="Address Line 2"
-                  id="currentAddressLine1"
+                  id="currentAddressLine2"
                   type="text"
                   className="form-control"
                   onChange={(e) => setCurrentAddressLine2(e.target.value)}
                 />
-
+              </Form.Group>
+              <Form.Group widths="equal">
                 <Form.Input
                   fluid
                   label="City"
@@ -165,16 +170,17 @@ function Create(props) {
                   type="text"
                   className="form-control"
                   onChange={(e) => setCurrentAddressZip(e.target.value)}
-                />
-                <SemanticDatepicker
-                  id="currentAddressAddedDate"
-                  label="Added Date"
-                  onChange={(e) => (event, data) =>
-                    setCurrentAddressAddedDate(data.value)}
-                />
+                /> 
+               <Form.Input label = "Addres Added Date"
+                id="currentAddressAddedDate"
+                type="date"
+                className="form-control" 
+                onChange={(e) => setCurrentAddressAddedDate(e.target.value)}                
+              />
               </Form.Group>
+              <Divider />
               <h4>Previous Address</h4>
-              <Form.Group>
+              <Form.Group widths="equal">
                 <Form.Input
                   fluid
                   label="Address Line 1"
@@ -191,6 +197,8 @@ function Create(props) {
                   className="form-control"
                   onChange={(e) => setPreviousAddressLine2(e.target.value)}
                 />
+              </Form.Group>
+              <Form.Group widths="equal">
                 <Form.Input
                   fluid
                   label="City"
@@ -215,13 +223,14 @@ function Create(props) {
                   className="form-control"
                   onChange={(e) => setPreviousAddresszip(e.target.value)}
                 />
-                <SemanticDatepicker
-                  id="previousAddressAddedDate"
-                  label="Added Date"
-                  onChange={(e) => (event, data) =>
-                    setPreviousAddressAddedDate(data.value)}
-                />
+                 <Form.Input
+                id="previousAddressAddedDate" label = "Address Added Date"
+                type="date"
+                className="form-control" 
+                onChange={(e) => setPreviousAddressAddedDate(e.target.value)}                
+              />
               </Form.Group>
+              <Divider fitted />
               <h4>Contact Info</h4>
               <Form.Group widths="equal">
                 <Form.Input
@@ -256,12 +265,14 @@ function Create(props) {
                   className="form-control"
                   onChange={(e) => setSecondaryCustomerContact(e.target.value)}
                 />
-                <SemanticDatepicker
-                  id="serviceStartDate"
-                  label="Service Start Date"
-                  onChange={(e) => (event, data) =>
-                    setServiceStartDate(data.value)}
-                />
+              </Form.Group>
+              <Form.Group widths="equal">
+              <Form.Input label = "Service Start Date"
+                id="serviceStartDate"
+                type="date"
+                className="form-control"   
+                         onChange={(e) => setServiceStartDate(e.target.value)}                
+              />
                 <Form.Input
                   fluid
                   label="Products"

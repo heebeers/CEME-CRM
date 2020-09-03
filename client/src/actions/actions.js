@@ -26,6 +26,10 @@ export const UPDATE_CUSTOMER_BEGIN   = 'UPDATE_CUSTOMER_BEGIN';
 export const UPDATE_CUSTOMER_SUCCESS = 'UPDATE_CUSTOMER_SUCCESS';
 export const UPDATE_CUSTOMER_FAILURE = 'UPDATE_CUSTOMER_FAILURE';
 
+export const DELETE_CUSTOMER_BEGIN   = 'DELETE_CUSTOMER_BEGIN';
+export const DELETE_CUSTOMER_SUCCESS = 'DELETE_CUSTOMER_SUCCESS';
+export const DELETE_CUSTOMER_FAILURE = 'DELETE_CUSTOMER_FAILURE';
+
 export const FETCH_INTERACTIONS_BEGIN   = 'FETCH_INTERACTIONS_BEGIN';
 export const FETCH_INTERACTIONS_SUCCESS = 'FETCH_INTERACTIONS_SUCCESS';
 export const FETCH_INTERACTIONS_FAILURE = 'FETCH_INTERACTIONS_FAILURE';
@@ -41,6 +45,10 @@ export const ADD_INTERACTION_FAILURE = 'ADD_INTERACTION_FAILURE';
 export const UPDATE_INTERACTION_BEGIN   = 'UPDATE_INTERACTION_BEGIN';
 export const UPDATE_INTERACTION_SUCCESS = 'UPDATE_INTERACTION_SUCCESS';
 export const UPDATE_INTERACTION_FAILURE = 'UPDATE_INTERACTION_FAILURE';
+
+export const DELETE_INTERACTION_BEGIN   = 'DELETE_INTERACTION_BEGIN';
+export const DELETE_INTERACTION_SUCCESS = 'DELETE_INTERACTION_SUCCESS';
+export const DELETE_INTERACTION_FAILURE = 'DELETE_INTERACTION_FAILURE';
 
 // Add Interaction
 export const addINTERACTIONBegin = () => ({
@@ -86,6 +94,21 @@ export const updateINTERACTIONSuccess = interactions => ({
 
 export const updateINTERACTIONFailure = error => ({
   type: UPDATE_INTERACTION_FAILURE,
+  payload: { error }
+});
+
+// Delete Interaction
+export const deleteINTERACTIONBegin = () => ({
+  type: DELETE_INTERACTION_BEGIN
+});
+
+export const deleteINTERACTIONSuccess = interactions => ({
+  type: DELETE_INTERACTION_SUCCESS,
+  payload: { message: "success" }
+});
+
+export const deleteINTERACTIONFailure = error => ({
+  type: DELETE_INTERACTION_FAILURE,
   payload: { error }
 });
 
@@ -167,6 +190,21 @@ export const updateCUSTOMERFailure = error => ({
   payload: { error }
 });
 
+// Delete CUSTOMER
+export const deleteCUSTOMERBegin = () => ({
+  type: DELETE_CUSTOMER_BEGIN
+});
+
+export const deleteCUSTOMERSuccess = customers => ({
+  type: DELETE_CUSTOMER_SUCCESS,
+  payload: { message: "success" }
+});
+
+export const deleteCUSTOMERFailure = error => ({
+  type: DELETE_CUSTOMER_FAILURE,
+  payload: { error }
+});
+
 
 
 
@@ -224,6 +262,19 @@ export function updateCUSTOMER(customer) {
   }
 }
 
+export function deleteCUSTOMER(customerId) {
+  return dispatch => {
+    dispatch(deleteCUSTOMERBegin());
+    axios
+    .delete("http://localhost:8080/customers/" + customerId)
+    .then(response => {
+      console.log(response.data);
+      dispatch(deleteCUSTOMERSuccess(response.data));
+    })
+    .catch(error => dispatch(deleteCUSTOMERFailure(error)));
+  }
+}
+
 export function fetchINTERACTION(customerId) {
   return dispatch => {
     dispatch(fetchINTERACTIONsBegin());
@@ -247,6 +298,19 @@ export function getINTERACTION(id) {
       dispatch(getINTERACTIONSuccess(response.data));
     })
     .catch(error => dispatch(getINTERACTIONFailure(error)));
+  }
+}
+
+export function deleteINTERACTION(id) {
+  return dispatch => {
+    dispatch(deleteINTERACTIONBegin());
+    axios
+    .delete("http://localhost:8080/interactions/" + id)
+    .then(response => {
+      console.log(response.data);
+      dispatch(deleteINTERACTIONSuccess(response.data));
+    })
+    .catch(error => dispatch(deleteINTERACTIONFailure(error)));
   }
 }
 

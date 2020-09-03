@@ -8,6 +8,7 @@ import CreateInteraction from "./interactions/createInteraction";
 import CustomerList from "./customer/customerList";
 import InteractionList from "./interactions/interactionsList";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import Clock from "./components/Clock";
 
@@ -27,6 +28,7 @@ function App(props) {
         </Switch>
         <Clock />
       </Container>
+      <Footer />
     </Router>
   );
 }

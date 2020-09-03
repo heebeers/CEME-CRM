@@ -55,6 +55,9 @@ const Footer = () => {
               </p>
               <p className="legal">
                 ©2020 Ambitious Ventures CRM, LLC. All rights reserved.
+                <br />
+                By continuing to use the website, you consent to the use of
+                cookies, <a href="#">Read More</a>.
               </p>
             </Grid.Column>
           </Grid.Row>

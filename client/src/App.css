@@ -22,7 +22,8 @@ tr:hover {
 #Footer a.item a {
   color: black !important;
 }
-#Footer a.item a:hover {
+#Footer a.item a:hover,
+#Footer a {
   color: #333 !important;
   font-weight: bold;
 }

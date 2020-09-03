@@ -14,3 +14,7 @@
 tr:hover {
   background: #d6f1f8b7;
 }
+
+.legal {
+  font-style: italic;
+}

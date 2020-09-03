@@ -25,19 +25,18 @@ const Footer = () => {
               <Header inverted as="h4" content="Customers:" />
               <List link inverted>
                 <List.Item as="a">
-                  <Link to={"/listCustomers"} className="navbar-brand">
-                    View Customers
-                  </Link>
+                  <Link to={"/listCustomers"}>View Customers</Link>
                 </List.Item>
                 <List.Item as="a">
-                  <Link to={"/create"} className="navbar-brand">
-                    Add Customers
-                  </Link>
+                  <Link to={"/create"}>Add Customers</Link>
                 </List.Item>
                 <List.Item as="a">
-                  <Link to={"/showInteractions"} className="navbar-brand">
-                    View Interactions
-                  </Link>
+                  <Link to={"/showInteractions"}>View Interactions</Link>
+                </List.Item>
+                <List.Item as="a">
+                  <Link to={"/"}>Privacy Policy</Link>
+                  <br />
+                  <Link to={"/"}>Terms & Conditions</Link>
                 </List.Item>
               </List>
             </Grid.Column>
@@ -48,6 +47,9 @@ const Footer = () => {
               <p>
                 Kickstarter live-edge shoreditch glossier locavore, anim forage
                 adipisicing. Fashion axe schlitz cred roof party kinfolk.
+              </p>
+              <p className="legal">
+                ©2020 Ambitious Ventures CRM, LLC. All rights reserved.
               </p>
             </Grid.Column>
           </Grid.Row>

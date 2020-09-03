@@ -13,10 +13,10 @@ public class Interaction {
     private String interactionType;
     private String interactionNotes;
     private String interactionFollowUpType;
-    private Date iteractionFollowUpDate;
+    private Date interactionFollowUpDate;
     private Date interactionDate;
     private String employeeId;
-    private int priorityLevel;
+    private String priorityLevel;
 
     public String getId() {
         return id.toString();
@@ -58,12 +58,12 @@ public class Interaction {
         this.interactionFollowUpType = interactionFollowUpType;
     }
 
-    public Date getIteractionFollowUpDate() {
-        return iteractionFollowUpDate;
+    public Date getInteractionFollowUpDate() {
+        return interactionFollowUpDate;
     }
 
-    public void setIteractionFollowUpDate(Date iteractionFollowUpDate) {
-        this.iteractionFollowUpDate = iteractionFollowUpDate;
+    public void setInteractionFollowUpDate(Date interactionFollowUpDate) {
+        this.interactionFollowUpDate = interactionFollowUpDate;
     }
 
     public Date getInteractionDate() {
@@ -82,11 +82,11 @@ public class Interaction {
         this.employeeId = employeeId;
     }
 
-    public int getPriorityLevel() {
+    public String getPriorityLevel() {
         return priorityLevel;
     }
 
-    public void setPriorityLevel(int priorityLevel) {
+    public void setPriorityLevel(String priorityLevel) {
         this.priorityLevel = priorityLevel;
     }
 

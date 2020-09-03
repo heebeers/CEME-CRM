@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import { addCUSTOMER, store, ADD_CUSTOMER_BEGIN } from "./../actions/actions";
@@ -44,6 +45,7 @@ function Create(props) {
   const [secondaryCustomerContact, setSecondaryCustomerContact] = useState("");
   const [products, setProducts] = useState("");
   const [activeCustomer, setActiveCustomer] = useState("");
+  let history = useHistory();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -73,6 +75,9 @@ function Create(props) {
     customer.activeCustomer = activeCustomer;
 
     dispatch(addCUSTOMER(customer));
+    history.push("./listCustomers");
+
+
   };
 
   const AppWithBasic = () => {
@@ -113,10 +118,12 @@ function Create(props) {
                   type="text"
                   className="form-control"
                   onChange={(e) => setLastName(e.target.value)}
-                />
-                <SemanticDatepicker
-                  label="Date of Birth"
-                  onChange={(e) => (event, data) => setDateOfBirth(data.value)}
+                />                
+                <Form.Input label = "Date of Birth"
+                  id="dateOfBirth"
+                  type="date"
+                  className="form-control" 
+                  onChange={(e) => setDateOfBirth(e.target.value)}                
                 />
               </Form.Group>
               <Divider />
@@ -133,7 +140,7 @@ function Create(props) {
                 <Form.Input
                   fluid
                   label="Address Line 2"
-                  id="currentAddressLine1"
+                  id="currentAddressLine2"
                   type="text"
                   className="form-control"
                   onChange={(e) => setCurrentAddressLine2(e.target.value)}
@@ -163,13 +170,13 @@ function Create(props) {
                   type="text"
                   className="form-control"
                   onChange={(e) => setCurrentAddressZip(e.target.value)}
-                />
-                <SemanticDatepicker
-                  id="currentAddressAddedDate"
-                  label="Added Date"
-                  onChange={(e) => (event, data) =>
-                    setCurrentAddressAddedDate(data.value)}
-                />
+                /> 
+               <Form.Input label = "Addres Added Date"
+                id="currentAddressAddedDate"
+                type="date"
+                className="form-control" 
+                onChange={(e) => setCurrentAddressAddedDate(e.target.value)}                
+              />
               </Form.Group>
               <Divider />
               <h4>Previous Address</h4>
@@ -216,12 +223,12 @@ function Create(props) {
                   className="form-control"
                   onChange={(e) => setPreviousAddresszip(e.target.value)}
                 />
-                <SemanticDatepicker
-                  id="previousAddressAddedDate"
-                  label="Added Date"
-                  onChange={(e) => (event, data) =>
-                    setPreviousAddressAddedDate(data.value)}
-                />
+                 <Form.Input
+                id="previousAddressAddedDate" label = "Address Added Date"
+                type="date"
+                className="form-control" 
+                onChange={(e) => setPreviousAddressAddedDate(e.target.value)}                
+              />
               </Form.Group>
               <Divider fitted />
               <h4>Contact Info</h4>
@@ -260,12 +267,12 @@ function Create(props) {
                 />
               </Form.Group>
               <Form.Group widths="equal">
-                <SemanticDatepicker
-                  id="serviceStartDate"
-                  label="Service Start Date"
-                  onChange={(e) => (event, data) =>
-                    setServiceStartDate(data.value)}
-                />
+              <Form.Input label = "Service Start Date"
+                id="serviceStartDate"
+                type="date"
+                className="form-control"   
+                         onChange={(e) => setServiceStartDate(e.target.value)}                
+              />
                 <Form.Input
                   fluid
                   label="Products"
@@ -277,7 +284,7 @@ function Create(props) {
                 <Form.Input
                   label="Active Customer"
                   id="activeCustomer"
-                  type="text"
+                  type="checkbox"
                   className="form-control"
                   onChange={(e) => setActiveCustomer(e.target.value)}
                 />
@@ -288,7 +295,7 @@ function Create(props) {
                 type="submit"
                 value="Create Customer"
               >
-                Primary
+               Add Customer
               </Button>
             </Form>
           </Form>

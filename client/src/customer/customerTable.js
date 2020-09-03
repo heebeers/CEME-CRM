@@ -22,7 +22,12 @@ const CustomerTable = ({ customers }) => {
           {customers.map((customer) => (
             <Table.Row>
               <Table.Cell>
+              <Link
+                  to={"/edit?id=" + customer._links.self.href.substring(32)}
+                  className="nav-link"
+                >
                 {customer.firstName} {customer.lastName}
+                </Link>
               </Table.Cell>
               <Table.Cell>
                 {customer.currentAddressLine1} {customer.currentAddressLine2}{" "}
@@ -39,15 +44,20 @@ const CustomerTable = ({ customers }) => {
                 >
                   <Popup
                     trigger={<Icon name="edit" />}
-                    content={`Edit ${customer.firstName} ${customer.firstName}`}
+                    content={`Edit ${customer.firstName} ${customer.lastName}`}
                     size="mini"
                   />
                 </Link>
+                <Link
+                  to={"/delete?id=" + customer._links.self.href.substring(32)}
+                  className="nav-link"
+                >
                 <Popup
                   trigger={<Icon name="trash alternative" />}
-                  content={`Delete ${customer.firstName} ${customer.firstName}`}
+                  content={`Delete ${customer.firstName} ${customer.lastName}`}
                   size="mini"
                 />
+                </Link>
                 <Link
                   to={
                     "/showInteractions?id=" +
@@ -57,7 +67,7 @@ const CustomerTable = ({ customers }) => {
                 >
                   <Popup
                     trigger={<Icon name="conversation" />}
-                    content={`Interactions with ${customer.firstName} ${customer.firstName}`}
+                    content={`Interactions with ${customer.firstName} ${customer.lastName}`}
                     size="mini"
                   />
                 </Link>

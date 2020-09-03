@@ -14,6 +14,17 @@ function App(props) {
     <Router>
       <Header />
       <Container className="container" style={{ marginTop: "7em" }}>
+        <Container text>
+          <h1>Placeholder Title</h1>
+          <p>
+            Seitan eu try-hard la croix you probably haven't heard of them
+            locavore. Sriracha cray offal, magna echo park swag dolore mollit
+            pour-over cliche venmo irure scenester. Kickstarter live-edge
+            shoreditch glossier locavore, anim forage adipisicing. Fashion axe
+            schlitz cred roof party kinfolk, kale chips migas dolore kombucha
+            retro gentrify subway tile drinking vinegar paleo.
+          </p>
+        </Container>
         {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <Link to={"/listCustomers"} className="navbar-brand">
             List Customers

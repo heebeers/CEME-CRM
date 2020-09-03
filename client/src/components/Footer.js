@@ -14,15 +14,20 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 const Footer = () => {
   return (
     <Segment
-      inverted
+      id="Footer"
       vertical
-      style={{ marginTop: "20em", padding: "5em 0em" }}
+      style={{
+        marginTop: "20em",
+        padding: "5em 0em",
+        background: "skyBlue",
+        color: "black",
+      }}
     >
       <Container>
-        <Grid divided inverted stackable>
+        <Grid divided stackable>
           <Grid.Row>
             <Grid.Column width={3}>
-              <Header inverted as="h4" content="Customers:" />
+              <Header style={{ color: "black" }} as="h4" content="Customers:" />
               <List link inverted>
                 <List.Item as="a">
                   <Link to={"/listCustomers"}>View Customers</Link>
@@ -41,7 +46,7 @@ const Footer = () => {
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
-              <Header as="h4" inverted>
+              <Header as="h4" style={{ color: "black" }}>
                 Ambitious Ventures CRM
               </Header>
               <p>

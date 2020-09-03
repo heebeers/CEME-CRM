@@ -18,3 +18,11 @@ tr:hover {
 .legal {
   font-style: italic;
 }
+
+#Footer a.item a {
+  color: black !important;
+}
+#Footer a.item a:hover {
+  color: #333 !important;
+  font-weight: bold;
+}

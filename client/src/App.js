@@ -25,25 +25,6 @@ function App(props) {
             retro gentrify subway tile drinking vinegar paleo.
           </p>
         </Container>
-        {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <Link to={"/listCustomers"} className="navbar-brand">
-            List Customers
-          </Link>
-          <br />
-          <Link to={"/listInteractions"} className="navbar-brand">
-            List Interactions
-          </Link>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link to={"/create"} className="nav-link">
-                  Create Customer
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </nav>{" "}
-        <br /> */}
 
         <Switch>
           <Route path="/listCustomers" component={CustomerList} />

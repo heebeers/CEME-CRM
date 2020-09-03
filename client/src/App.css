@@ -10,3 +10,7 @@
     transform: rotate(360deg);
   }
 }
+
+tr:hover {
+  background: #d6f1f8b7;
+}

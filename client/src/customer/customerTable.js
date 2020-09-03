@@ -39,13 +39,13 @@ const CustomerTable = ({ customers }) => {
                 >
                   <Popup
                     trigger={<Icon name="edit" />}
-                    content={`Edit ${customer.firstName} ${customer.firstName}`}
+                    content={`Edit ${customer.firstName} ${customer.lastName}`}
                     size="mini"
                   />
                 </Link>
                 <Popup
                   trigger={<Icon name="trash alternative" />}
-                  content={`Delete ${customer.firstName} ${customer.firstName}`}
+                  content={`Delete ${customer.firstName} ${customer.lastName}`}
                   size="mini"
                 />
                 <Link
@@ -57,7 +57,7 @@ const CustomerTable = ({ customers }) => {
                 >
                   <Popup
                     trigger={<Icon name="conversation" />}
-                    content={`Interactions with ${customer.firstName} ${customer.firstName}`}
+                    content={`Interactions with ${customer.firstName} ${customer.lastName}`}
                     size="mini"
                   />
                 </Link>

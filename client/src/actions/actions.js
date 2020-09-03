@@ -30,13 +30,17 @@ export const FETCH_INTERACTIONS_BEGIN   = 'FETCH_INTERACTIONS_BEGIN';
 export const FETCH_INTERACTIONS_SUCCESS = 'FETCH_INTERACTIONS_SUCCESS';
 export const FETCH_INTERACTIONS_FAILURE = 'FETCH_INTERACTIONS_FAILURE';
 
-export const GETALL_INTERACTIONS_BEGIN   = 'GETALL_INTERACTIONS_BEGIN';
-export const GETALL_INTERACTIONS_SUCCESS = 'GETALL_INTERACTIONS_SUCCESS';
-export const GETALL_INTERACTIONS_FAILURE = 'GETALL_INTERACTIONS_FAILURE';
+export const GET_INTERACTION_BEGIN   = 'GET_INTERACTION_BEGIN';
+export const GET_INTERACTION_SUCCESS = 'GET_INTERACTION_SUCCESS';
+export const GET_INTERACTION_FAILURE = 'GET_INTERACTION_FAILURE';
 
 export const ADD_INTERACTION_BEGIN   = 'ADD_INTERACTION_BEGIN';
 export const ADD_INTERACTION_SUCCESS = 'ADD_INTERACTION_SUCCESS';
 export const ADD_INTERACTION_FAILURE = 'ADD_INTERACTION_FAILURE';
+
+export const UPDATE_INTERACTION_BEGIN   = 'UPDATE_INTERACTION_BEGIN';
+export const UPDATE_INTERACTION_SUCCESS = 'UPDATE_INTERACTION_SUCCESS';
+export const UPDATE_INTERACTION_FAILURE = 'UPDATE_INTERACTION_FAILURE';
 
 // Add Interaction
 export const addINTERACTIONBegin = () => ({
@@ -55,18 +59,33 @@ export const addINTERACTIONFailure = error => ({
 
 // Get All Interactions
 
-export const getallINTERACTIONsBegin = () => ({
-  type: GETALL_INTERACTIONS_BEGIN
+export const getINTERACTIONBegin = () => ({
+  type: GET_INTERACTION_BEGIN
   
 });
 
-export const getallINTERACTIONsSuccess = interactions => ({
-  type: GETALL_INTERACTIONS_SUCCESS,
-  payload: { interactions }
+export const getINTERACTIONSuccess = interaction => ({
+  type: GET_INTERACTION_SUCCESS,
+  payload: { interaction }
 });
 
-export const getallINTERACTIONsFailure = error => ({
-  type: GETALL_INTERACTIONS_FAILURE,
+export const getINTERACTIONFailure = error => ({
+  type: GET_INTERACTION_FAILURE,
+  payload: { error }
+});
+
+// Update Interaction
+export const updateINTERACTIONBegin = () => ({
+  type: UPDATE_INTERACTION_BEGIN
+});
+
+export const updateINTERACTIONSuccess = interactions => ({
+  type: UPDATE_INTERACTION_SUCCESS,
+  payload: { message: "success" }
+});
+
+export const updateINTERACTIONFailure = error => ({
+  type: UPDATE_INTERACTION_FAILURE,
   payload: { error }
 });
 
@@ -218,16 +237,29 @@ export function fetchINTERACTION(customerId) {
   }
 }
 
-export function getallINTERACTIONs() {
+export function getINTERACTION(id) {
   return dispatch => {
-    dispatch(getallINTERACTIONsBegin());
+    dispatch(getINTERACTIONBegin());
     axios
-    .get("http://localhost:8080/interactions")
+    .get("http://localhost:8080/interactions/" + id)
     .then(response => {
       console.log(response.data);
-      dispatch(getallINTERACTIONsSuccess(response.data._embedded.interactions));
+      dispatch(getINTERACTIONSuccess(response.data));
     })
-    .catch(error => dispatch(getallINTERACTIONsFailure(error)));
+    .catch(error => dispatch(getINTERACTIONFailure(error)));
+  }
+}
+
+export function updateINTERACTION(interaction) {
+  return dispatch => {
+    dispatch(updateINTERACTIONBegin());
+    axios
+    .put("http://localhost:8080/interactions/" + interaction._links.self.href.substring(35), interaction)
+    .then(response => {
+      console.log(response.data);
+      dispatch(updateINTERACTIONSuccess(response.data));
+    })
+    .catch(error => dispatch(updateINTERACTIONFailure(error)));
   }
 }
 

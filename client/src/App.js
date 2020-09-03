@@ -5,6 +5,7 @@ import Edit from "./customer/edit";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 import CreateInteraction from "./interactions/createInteraction";
+import EditInteraction from "./interactions/editInteraction";
 import CustomerList from "./customer/customerList";
 import InteractionList from "./interactions/interactionsList";
 import Header from "./components/Header";
@@ -33,6 +34,7 @@ function App(props) {
           <Route exact path="/edit" component={Edit} />
           <Route exact path="/showInteractions" component={InteractionList} />
           <Route exact path="/addInteraction" component={CreateInteraction} />
+          <Route exact path="/editInteraction" component={EditInteraction} />
           <Route exact path="/index" component={App} />
         </Switch>
       </Container>

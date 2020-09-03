@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import { addCUSTOMER, store, ADD_CUSTOMER_BEGIN } from "./../actions/actions";
@@ -43,6 +44,7 @@ function Create(props) {
   const [secondaryCustomerContact, setSecondaryCustomerContact] = useState("");
   const [products, setProducts] = useState("");
   const [activeCustomer, setActiveCustomer] = useState("");
+  let history = useHistory();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -72,6 +74,9 @@ function Create(props) {
     customer.activeCustomer = activeCustomer;
 
     dispatch(addCUSTOMER(customer));
+    history.push("./listCustomers");
+
+
   };
 
   const AppWithBasic = () => {
@@ -268,7 +273,7 @@ function Create(props) {
                 <Form.Input
                   label="Active Customer"
                   id="activeCustomer"
-                  type="text"
+                  type="checkbox"
                   className="form-control"
                   onChange={(e) => setActiveCustomer(e.target.value)}
                 />
@@ -279,7 +284,7 @@ function Create(props) {
                 type="submit"
                 value="Create Customer"
               >
-                Primary
+               Add Customer
               </Button>
             </Form>
           </Form>

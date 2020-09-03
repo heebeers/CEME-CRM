@@ -6,13 +6,17 @@ import { ADD_INTERACTION_BEGIN,
   ADD_INTERACTION_SUCCESS,
   ADD_INTERACTION_FAILURE } from '../actions/actions';
 
+  import { UPDATE_INTERACTION_BEGIN,
+    UPDATE_INTERACTION_SUCCESS,
+    UPDATE_INTERACTION_FAILURE } from '../actions/actions';
+
 import { FETCH_INTERACTIONS_BEGIN,
   FETCH_INTERACTIONS_SUCCESS,
   FETCH_INTERACTIONS_FAILURE } from '../actions/actions';
 
-import { GETALL_INTERACTIONS_BEGIN,
-    GETALL_INTERACTIONS_SUCCESS,
-    GETALL_INTERACTIONS_FAILURE } from '../actions/actions';
+import { GET_INTERACTION_BEGIN,
+    GET_INTERACTION_SUCCESS,
+    GET_INTERACTION_FAILURE } from '../actions/actions';
 
 import { FETCH_CUSTOMERS_BEGIN,
  FETCH_CUSTOMERS_SUCCESS,
@@ -33,6 +37,7 @@ import { FETCH_CUSTOMERS_BEGIN,
  // an initial state variable used at the start
  const initialState = {
     customers: [],
+    interactions:[],
     loading: false,
     error: null,
    
@@ -41,25 +46,6 @@ import { FETCH_CUSTOMERS_BEGIN,
   // the reducer is here. It is going to return different states depending upon the action
  export default  function customersReducer(state = initialState, action) {
     switch (action.type) {
-      case ADD_INTERACTION_BEGIN:
-        return {
-          ...state,
-          loading:true,
-          error: null
-        }
-      case ADD_INTERACTION_SUCCESS:
-        return {
-          ...state,
-          loading: false,
-          interactions: action.payload.interactions
-        };
-      case ADD_INTERACTION_FAILURE:
-        return {
-          ...state,
-          loading: false,
-          error: action.payload.error,
-          interactions: []
-        };
       case FETCH_CUSTOMERS_BEGIN:
         return {
           ...state,
@@ -152,26 +138,62 @@ import { FETCH_CUSTOMERS_BEGIN,
               error: action.payload.error,
               interactions: []
             };
-            case GETALL_INTERACTIONS_BEGIN:
+            case GET_INTERACTION_BEGIN:
             return {
               ...state,
               loading:true,
               error: null
             }
-          case GETALL_INTERACTIONS_SUCCESS:
+          case GET_INTERACTION_SUCCESS:
             return {
               ...state,
               loading: false,
-              interactions: action.payload.interactions
+              interaction: action.payload.interaction
             };
-          case GETALL_INTERACTIONS_FAILURE:
+          case GET_INTERACTION_FAILURE:
             return {
               ...state,
               loading: false,
               error: action.payload.error,
               interactions: []
             };
-        
+          case ADD_INTERACTION_BEGIN:
+            return {
+              ...state,
+              loading:true,
+              error: null
+            }
+          case ADD_INTERACTION_SUCCESS:
+            return {
+              ...state,
+              loading: false,
+              interactions: action.payload.interactions
+            };
+          case ADD_INTERACTION_FAILURE:
+            return {
+              ...state,
+              loading: false,
+              error: action.payload.error,
+              interactions: []
+            };
+          case UPDATE_INTERACTION_BEGIN:
+            return {
+              ...state,
+              loading:true,
+              error: null
+            }
+          case UPDATE_INTERACTION_SUCCESS:
+            return {
+              ...state,
+              loading: false
+            };
+          case UPDATE_INTERACTION_FAILURE:
+            return {
+              ...state,
+              loading: false,
+              error: action.payload.error,
+              interaction: []
+            };
       default:
           return state;
       }  

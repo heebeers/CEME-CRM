@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./../App.css";
 import { getallINTERACTIONs, fetchINTERACTION } from "./../actions/actions";
 import { Container } from "semantic-ui-react";
-import { Header, Table, Rating } from "semantic-ui-react";
+import { Table, Icon, Popup } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 // needed for functional components
 import { useSelector, useDispatch } from "react-redux";
@@ -43,6 +43,7 @@ function InteractionList(props) {
                 <Table.HeaderCell>Interaction Type</Table.HeaderCell>
                 <Table.HeaderCell>Interaction Follow up Date</Table.HeaderCell>
                 <Table.HeaderCell>Priority</Table.HeaderCell>
+                <Table.HeaderCell>Actions</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -54,6 +55,18 @@ function InteractionList(props) {
                   <Table.Cell>{interaction.interactionType}</Table.Cell>
                   <Table.Cell>{interaction.interactionFollowUpDate}</Table.Cell>
                   <Table.Cell>{interaction.priorityLevel}</Table.Cell>
+                  <Table.Cell>
+                  <Link
+                  to={"/editInteraction?id=" + interaction._links.self.href.substring(35)}
+                  className="nav-link"
+                >
+                  <Popup
+                    trigger={<Icon name="edit" />}
+                    content={`Edit Interactions`}
+                    size="mini"
+                  />
+                </Link>
+                </Table.Cell>
                 </Table.Row>
               ))}
             </Table.Body>

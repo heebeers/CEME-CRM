@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { connect } from 'react-redux';
 import {updateCUSTOMER, getCUSTOMER, store, UPDATE_CUSTOMER_BEGIN} from '../actions/actions';
@@ -6,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 function Edit(props) {
+  
+  let history = useHistory();
   const customerState = useSelector((state) => state);
   const {customer, loading, error} = customerState;
  
@@ -48,31 +51,34 @@ function Edit(props) {
   const submitHandler = async(e) => {
     e.preventDefault();
     // this is empty
-    customer.firstName = firstName;
-    customer.lastName = lastName;
-    customer.middleName = middleName;
-    customer.currentAddressLine1 = currentAddressLine1;
-    customer.currentAddressLine2 = currentAddressLine2;
-    customer.currentAddressCity = currentAddressCity;
-    customer.currentAddressState = currentAddressState;
-    customer.currentAddresszip = currentAddresszip;
-    customer.currentAddressAddedDate = currentAddressAddedDate;
-    customer.previousAddressLine1 = previousAddressLine1;
-    customer.previousAddressLine2 = previousAddressLine2;
-    customer.previousAddressCity = previousAddressCity;
-    customer.previousAddressState = previousAddressState;
-    customer.previousAddresszip = previousAddresszip;
-    customer.previousAddressAddedDate = previousAddressAddedDate;
-    customer.serviceStartDate = serviceStartDate;
-    customer.dateOfBirth = dateOfBirth;
-    customer.email = email;
-    customer.customerPhone = customerPhone;
-    customer.preferredContact = preferredContact;
-    customer.secondaryCustomerContact = secondaryCustomerContact;
-    customer.products = products;
-    customer.activeCustomer = activeCustomer;
+    console.log(e.target);
+    customer.firstName = e.target.firstName.value;
+    customer.lastName = e.target.lastName.value;
+    customer.middleName =  e.target.middleName.value;
+    customer.currentAddressLine1 =  e.target.currentAddressLine1.value;
+    customer.currentAddressLine2 =  e.target.currentAddressLine2.value;
+    customer.currentAddressCity =  e.target.currentAddressCity.value;
+    customer.currentAddressState =  e.target.currentAddressState.value;
+    customer.currentAddresszip =  e.target.currentAddresszip.value;
+    customer.currentAddressAddedDate =  e.target.currentAddressAddedDate.value;
+    customer.previousAddressLine1 =  e.target.previousAddressLine1.value;
+    customer.previousAddressLine2 =  e.target.previousAddressLine2.value;
+    customer.previousAddressCity =  e.target.previousAddressCity.value;
+    customer.previousAddressState =  e.target.previousAddressState.value;
+    customer.previousAddresszip =  e.target.previousAddresszip.value;
+    customer.previousAddressAddedDate =  e.target.previousAddressAddedDate.value;
+    customer.serviceStartDate =  e.target.serviceStartDate.value;
+    customer.dateOfBirth =  e.target.dateOfBirth.value;
+    customer.email =  e.target.email.value;
+    customer.customerPhone =  e.target.customerPhone.value;
+    customer.preferredContact =  e.target.preferredContact.value;
+    customer.secondaryCustomerContact =  e.target.secondaryCustomerContact.value;
+    customer.products =  e.target.products.value;
+    customer.activeCustomer =  e.target.activeCustomer.value;
 
     dispatch(updateCUSTOMER(customer));
+    history.push("./listCustomers");
+
   };
 
   return (
@@ -134,7 +140,7 @@ function Edit(props) {
             <div className="form-group col-md-5">
               <label for="currentAddressLine2">Address Line2: </label>
               <input
-                id="currentAddressLine1"
+                id="currentAddressLine2"
                 type="text"
                 className="form-control" defaultValue = {customer.currentAddressLine2}
                 onChange={(e) => setCurrentAddressLine2(e.target.value)}                
@@ -159,11 +165,11 @@ function Edit(props) {
               />
             </div>
             <div className="form-group col-md-5">
-              <label for="currentAddressZip">Zip: </label>
+              <label for="currentAddresszip">Zip: </label>
               <input
-                id="currentAddressZip"
+                id="currentAddresszip"
                 type="text"
-                className="form-control" defaultValue = {customer.currentAddressCity}
+                className="form-control" defaultValue = {customer.currentAddresszip}
                 onChange={(e) => setCurrentAddressZip(e.target.value)}                
               />
             </div>
@@ -215,9 +221,9 @@ function Edit(props) {
               />
             </div>
             <div className="form-group col-md-5">
-              <label for="previousAddressZip">Zip: </label>
+              <label for="previousAddresszip">Zip: </label>
               <input
-                id="previousAddressZip"
+                id="previousAddresszip"
                 type="text"
                 className="form-control" defaultValue = {customer.previousAddresszip}
                 onChange={(e) => setPreviousAddresszip(e.target.value)}                
@@ -294,7 +300,7 @@ function Edit(props) {
               <label for="activeCustomer">Active Customer: </label>
               <input
                 id="activeCustomer"
-                type="text"
+                type="checkbox"
                 className="form-control" defaultValue = {customer.activeCustomer}
                 onChange={(e) => setActiveCustomer(e.target.value)}                
               />

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import "./../App.css";
 import { getallINTERACTIONs, fetchINTERACTION } from "./../actions/actions";
 import { Container } from "semantic-ui-react";
@@ -8,11 +8,10 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 function InteractionList(props) {
-
   const interactionsList = useSelector((state) => state);
-  
-  const {interactions, loading, error} = interactionsList;
-  
+
+  const { interactions, loading, error } = interactionsList;
+
   const dispatch = useDispatch();
 
   const queryString = window.location.search;
@@ -26,51 +25,46 @@ function InteractionList(props) {
     };
   }, []);
 
- return (
+  return (
     <>
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
         <div>{error}</div>
-      ) : (<Container className="App">
-      <h1>Here are my Interactions!</h1>
-      <Table celled>
-      <Table.Header>
-        <Table.Row>
-        <Table.HeaderCell>Interaction Date</Table.HeaderCell>
-        <Table.HeaderCell>Interaction Follow up Type</Table.HeaderCell>
-        <Table.HeaderCell>Interaction Notes</Table.HeaderCell>
-        <Table.HeaderCell>Interaction Type</Table.HeaderCell>
-        <Table.HeaderCell>Interaction Follow up Date</Table.HeaderCell>
-        <Table.HeaderCell>Priority</Table.HeaderCell>
-          
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        {
-        interactions.map((interaction) => (
-        <Table.Row>
-            <Table.Cell>{interaction.interactionDate} </Table.Cell>
-            <Table.Cell>{interaction.interactionFollowUpType}</Table.Cell>
-            <Table.Cell>{interaction.interactionNotes}</Table.Cell>
-            <Table.Cell>{interaction.interactionType}</Table.Cell>
-            <Table.Cell>{interaction.interactionFollowUpDate}</Table.Cell>
-            <Table.Cell>{interaction.priorityLevel}</Table.Cell>
-        </Table.Row>
-        ))}
-      </Table.Body>
-    </Table>
-    <Link
-                to={"/addInteraction?id=" + id}
-                className="nav-link"
-              >
-                Add Interaction
-              </Link>
-      </Container>
+      ) : (
+        <Container className="App">
+          <h1>Customer Interactions</h1>
+          <Table celled>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Interaction Date</Table.HeaderCell>
+                <Table.HeaderCell>Interaction Follow up Type</Table.HeaderCell>
+                <Table.HeaderCell>Interaction Notes</Table.HeaderCell>
+                <Table.HeaderCell>Interaction Type</Table.HeaderCell>
+                <Table.HeaderCell>Interaction Follow up Date</Table.HeaderCell>
+                <Table.HeaderCell>Priority</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {interactions.map((interaction) => (
+                <Table.Row>
+                  <Table.Cell>{interaction.interactionDate} </Table.Cell>
+                  <Table.Cell>{interaction.interactionFollowUpType}</Table.Cell>
+                  <Table.Cell>{interaction.interactionNotes}</Table.Cell>
+                  <Table.Cell>{interaction.interactionType}</Table.Cell>
+                  <Table.Cell>{interaction.interactionFollowUpDate}</Table.Cell>
+                  <Table.Cell>{interaction.priorityLevel}</Table.Cell>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+          <Link to={"/addInteraction?id=" + id} className="nav-link">
+            Add Interaction
+          </Link>
+        </Container>
       )}
-      
     </>
- );
+  );
 }
 
 export default InteractionList;

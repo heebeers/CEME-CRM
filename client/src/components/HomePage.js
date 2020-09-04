@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
 import "react-semantic-toasts/styles/react-semantic-alert.css";
 
 import { Container } from "semantic-ui-react";
 
 function HomePage(props) {
-  setTimeout(() => {
-    toast({
-      type: "info",
-      icon: "calendar alternate outline",
-      title: "Today's Agenda",
-      description: "4 Calls to Make, 3 Meetings",
-      animation: "bounce",
-      time: 0,
-    });
-  }, 0);
+  useEffect(() => {
+    setTimeout(() => {
+      toast({
+        type: "info",
+        icon: "calendar alternate outline",
+        title: "Today's Agenda",
+        description: "4 Calls to Make, 3 Meetings",
+        animation: "bounce",
+        time: 0,
+      });
+    }, 0);
+  }, []);
 
   return (
     <Container text className="container" style={{ marginTop: "7em" }}>

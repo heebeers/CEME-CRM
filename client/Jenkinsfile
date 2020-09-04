@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Dependencies') {
             steps {
+                sh 'cd client'
                 sh 'npm install'
             }
         }

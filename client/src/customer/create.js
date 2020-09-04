@@ -76,8 +76,6 @@ function Create(props) {
 
     dispatch(addCUSTOMER(customer));
     history.push("./listCustomers");
-
-
   };
 
   const AppWithBasic = () => {
@@ -118,12 +116,13 @@ function Create(props) {
                   type="text"
                   className="form-control"
                   onChange={(e) => setLastName(e.target.value)}
-                />                
-                <Form.Input label = "Date of Birth"
+                />
+                <Form.Input
+                  label="Date of Birth"
                   id="dateOfBirth"
                   type="date"
-                  className="form-control" 
-                  onChange={(e) => setDateOfBirth(e.target.value)}                
+                  className="form-control"
+                  onChange={(e) => setDateOfBirth(e.target.value)}
                 />
               </Form.Group>
               <Divider />
@@ -170,13 +169,14 @@ function Create(props) {
                   type="text"
                   className="form-control"
                   onChange={(e) => setCurrentAddressZip(e.target.value)}
-                /> 
-               <Form.Input label = "Addres Added Date"
-                id="currentAddressAddedDate"
-                type="date"
-                className="form-control" 
-                onChange={(e) => setCurrentAddressAddedDate(e.target.value)}                
-              />
+                />
+                <Form.Input
+                  label="Address Added Date"
+                  id="currentAddressAddedDate"
+                  type="date"
+                  className="form-control"
+                  onChange={(e) => setCurrentAddressAddedDate(e.target.value)}
+                />
               </Form.Group>
               <Divider />
               <h4>Previous Address</h4>
@@ -223,12 +223,13 @@ function Create(props) {
                   className="form-control"
                   onChange={(e) => setPreviousAddresszip(e.target.value)}
                 />
-                 <Form.Input
-                id="previousAddressAddedDate" label = "Address Added Date"
-                type="date"
-                className="form-control" 
-                onChange={(e) => setPreviousAddressAddedDate(e.target.value)}                
-              />
+                <Form.Input
+                  id="previousAddressAddedDate"
+                  label="Address Added Date"
+                  type="date"
+                  className="form-control"
+                  onChange={(e) => setPreviousAddressAddedDate(e.target.value)}
+                />
               </Form.Group>
               <Divider fitted />
               <h4>Contact Info</h4>
@@ -267,12 +268,13 @@ function Create(props) {
                 />
               </Form.Group>
               <Form.Group widths="equal">
-              <Form.Input label = "Service Start Date"
-                id="serviceStartDate"
-                type="date"
-                className="form-control"   
-                         onChange={(e) => setServiceStartDate(e.target.value)}                
-              />
+                <Form.Input
+                  label="Service Start Date"
+                  id="serviceStartDate"
+                  type="date"
+                  className="form-control"
+                  onChange={(e) => setServiceStartDate(e.target.value)}
+                />
                 <Form.Input
                   fluid
                   label="Products"
@@ -295,7 +297,7 @@ function Create(props) {
                 type="submit"
                 value="Create Customer"
               >
-               Add Customer
+                Add Customer
               </Button>
             </Form>
           </Form>

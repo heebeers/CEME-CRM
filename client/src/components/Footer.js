@@ -33,10 +33,7 @@ const Footer = () => {
                   <Link to={"/listCustomers"}>View Customers</Link>
                 </List.Item>
                 <List.Item as="a">
-                  <Link to={"/create"}>Add Customers</Link>
-                </List.Item>
-                <List.Item as="a">
-                  <Link to={"/showInteractions"}>View Interactions</Link>
+                  <Link to={"/create"}>Add Customer</Link>
                 </List.Item>
                 <List.Item as="a">
                   <Link to={"/"}>Privacy Policy</Link>

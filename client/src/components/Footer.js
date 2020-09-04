@@ -50,8 +50,11 @@ const Footer = () => {
                 Ambitious Ventures CRM
               </Header>
               <p>
-                Kickstarter live-edge shoreditch glossier locavore, anim forage
-                adipisicing. Fashion axe schlitz cred roof party kinfolk.
+                Some CRM companies seem to think that 15 minutes is all it
+                takes. But not Ambitious Ventures. We'll take as long as you
+                want to help you make sure your CRM application is right. You
+                deserve more than just 15 minutes of fame. Are you on the road
+                to victory?
               </p>
               <p className="legal">
                 ©2020 Ambitious Ventures CRM, LLC. All rights reserved.

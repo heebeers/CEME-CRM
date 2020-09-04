@@ -23,14 +23,15 @@ function HomePage(props) {
         title="The header of the toast"
         position="top-right"
       />
-      <h3>Good afternoon.</h3>
+      <h3>Are you on the road to victory?</h3>
       <p>
-        Seitan eu try-hard la croix you probably haven't heard of them locavore.
-        Sriracha cray offal, magna echo park swag dolore mollit pour-over cliche
-        venmo irure scenester. Kickstarter live-edge shoreditch glossier
-        locavore, anim forage adipisicing. Fashion axe schlitz cred roof party
-        kinfolk, kale chips migas dolore kombucha retro gentrify subway tile
-        drinking vinegar paleo.
+        Go ahead... Make a wish... Now call your Ambitious Ventures Customer
+        Support agent. Because today, planning makes wishes come true. And your
+        Ambitious Ventures Customer Support agent can help make sure that
+        “family security”, “college funding”, and even a “healthy retirement”
+        are in the stars for you. Your Ambitious Ventures Customer Support agent
+        wants to be your agent for life. You're on the road to victory with
+        Ambitious Ventures.
       </p>
     </Container>
   );

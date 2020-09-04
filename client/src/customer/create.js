@@ -283,13 +283,6 @@ function Create(props) {
                   className="form-control"
                   onChange={(e) => setProducts(e.target.value)}
                 />
-                <Form.Input
-                  label="Active Customer"
-                  id="activeCustomer"
-                  type="checkbox"
-                  className="form-control"
-                  onChange={(e) => setActiveCustomer(e.target.value)}
-                />
               </Form.Group>
               <Button
                 variant="contained"

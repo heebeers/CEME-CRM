@@ -15,13 +15,7 @@ import customersReducer from "../reducer/customerReducer";
 function InteractionList(props) {
   const interactionsList = useSelector((state) => state);
 
-  const {
-    interactions,
-    interaction,
-    customer,
-    loading,
-    error,
-  } = interactionsList;
+  const { interactions, customer, loading, error } = interactionsList;
 
   const dispatch = useDispatch();
 
@@ -35,7 +29,7 @@ function InteractionList(props) {
     return () => {
       //
     };
-  }, [interaction]);
+  }, []);
 
   return (
     <>

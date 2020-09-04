@@ -1,6 +1,7 @@
 # CEME-CRM
 
 CRM project for CEME training cohort
+Swagger-UI documentation: http://localhost:8080/swagger-ui.html#/
 
 # client
 

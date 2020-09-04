@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 function CustomerList(props) {
   const customerList = useSelector((state) => state);
 
-  const { customers, loading, error } = customerList;
+  const { customers, customer, loading, error } = customerList;
 
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ function CustomerList(props) {
     return () => {
       //
     };
-  }, []);
+  }, [customer]);
 
   return (
     <>

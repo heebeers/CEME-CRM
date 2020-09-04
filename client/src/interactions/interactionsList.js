@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 function InteractionList(props) {
   const interactionsList = useSelector((state) => state);
 
-  const { interactions, loading, error } = interactionsList;
+  const { interactions, interaction, loading, error } = interactionsList;
 
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ function InteractionList(props) {
     return () => {
       //
     };
-  }, []);
+  }, [interaction]);
 
   return (
     <>
@@ -56,27 +56,33 @@ function InteractionList(props) {
                   <Table.Cell>{interaction.interactionFollowUpDate}</Table.Cell>
                   <Table.Cell>{interaction.priorityLevel}</Table.Cell>
                   <Table.Cell>
-                  <Link
-                  to={"/editInteraction?id=" + interaction._links.self.href.substring(35)}
-                  className="nav-link"
-                >
-                  <Popup
-                    trigger={<Icon name="edit" />}
-                    content={`Edit Interactions`}
-                    size="mini"
-                  />
-                </Link>
-                <Link
-                  to={"/deleteInteraction?id=" + interaction._links.self.href.substring(35)}
-                  className="nav-link"
-                >
-                  <Popup
-                    trigger={<Icon name="trash alternative" />}
-                    content={`Delete Interactions`}
-                    size="mini"
-                  />
-                </Link>
-                </Table.Cell>
+                    <Link
+                      to={
+                        "/editInteraction?id=" +
+                        interaction._links.self.href.substring(35)
+                      }
+                      className="nav-link"
+                    >
+                      <Popup
+                        trigger={<Icon name="edit" />}
+                        content={`Edit Interactions`}
+                        size="mini"
+                      />
+                    </Link>
+                    <Link
+                      to={
+                        "/deleteInteraction?id=" +
+                        interaction._links.self.href.substring(35)
+                      }
+                      className="nav-link"
+                    >
+                      <Popup
+                        trigger={<Icon name="trash alternative" />}
+                        content={`Delete Interactions`}
+                        size="mini"
+                      />
+                    </Link>
+                  </Table.Cell>
                 </Table.Row>
               ))}
             </Table.Body>

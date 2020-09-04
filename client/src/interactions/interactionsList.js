@@ -1,16 +1,27 @@
 import React, { useEffect } from "react";
 import "./../App.css";
-import { getallINTERACTIONs, fetchINTERACTION } from "./../actions/actions";
+import {
+  getallINTERACTIONs,
+  fetchINTERACTION,
+  getCUSTOMER,
+} from "./../actions/actions";
 import { Container } from "semantic-ui-react";
 import { Table, Icon, Popup } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 // needed for functional components
 import { useSelector, useDispatch } from "react-redux";
+import customersReducer from "../reducer/customerReducer";
 
 function InteractionList(props) {
   const interactionsList = useSelector((state) => state);
 
-  const { interactions, interaction, loading, error } = interactionsList;
+  const {
+    interactions,
+    interaction,
+    customer,
+    loading,
+    error,
+  } = interactionsList;
 
   const dispatch = useDispatch();
 
@@ -20,6 +31,7 @@ function InteractionList(props) {
 
   useEffect(() => {
     dispatch(fetchINTERACTION(id));
+    dispatch(getCUSTOMER(id));
     return () => {
       //
     };
@@ -33,10 +45,13 @@ function InteractionList(props) {
         <div>{error}</div>
       ) : (
         <Container className="App">
-          <h1>Customer Interactions</h1>
+          <h1>
+            {customer.firstName} {customer.lastName}'s Interactions
+          </h1>
           <Table celled>
             <Table.Header>
               <Table.Row>
+                <Table.HeaderCell>Interaction Date</Table.HeaderCell>
                 <Table.HeaderCell>Interaction Date</Table.HeaderCell>
                 <Table.HeaderCell>Interaction Type</Table.HeaderCell>
                 <Table.HeaderCell>Interaction Notes</Table.HeaderCell>

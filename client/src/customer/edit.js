@@ -86,7 +86,7 @@ function Edit(props) {
     customer.preferredContact = e.target.preferredContact.value;
     customer.secondaryCustomerContact = e.target.secondaryCustomerContact.value;
     customer.products = e.target.products.value;
-    customer.activeCustomer = e.target.activeCustomer.value;
+    //customer.activeCustomer = e.target.activeCustomer.value;
 
     dispatch(updateCUSTOMER(customer));
     history.push("./listCustomers");

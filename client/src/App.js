@@ -13,7 +13,7 @@ import DeleteInteraction from "./interactions/deleteInteraction";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
-import Clock from "./components/Clock";
+import Clock from "./components/clock/Clock";
 
 function App(props) {
   return (
@@ -29,7 +29,11 @@ function App(props) {
           <Route exact path="/showInteractions" component={InteractionList} />
           <Route exact path="/addInteraction" component={CreateInteraction} />
           <Route exact path="/editInteraction" component={EditInteraction} />
-          <Route exact path="/deleteInteraction" component={DeleteInteraction} />
+          <Route
+            exact
+            path="/deleteInteraction"
+            component={DeleteInteraction}
+          />
           <Route exact path="/index" component={App} />
           <Route exact path="/" component={HomePage} />
         </Switch>

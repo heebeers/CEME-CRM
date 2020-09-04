@@ -95,7 +95,9 @@ function Edit(props) {
   return (
     <>
       <div style={{ marginTop: 10 }}>
-        <h4>Update Current Customer</h4>
+        <h4>
+          Update {customer.firstName} {customer.lastName}
+        </h4>
         <Form onSubmit={submitHandler} autoComplete="off">
           <Form>
             <Form.Group widths="equal">

@@ -52,7 +52,6 @@ function InteractionList(props) {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Interaction Date</Table.HeaderCell>
-                <Table.HeaderCell>Interaction Date</Table.HeaderCell>
                 <Table.HeaderCell>Interaction Type</Table.HeaderCell>
                 <Table.HeaderCell>Interaction Notes</Table.HeaderCell>
                 <Table.HeaderCell>Interaction Follow up Type</Table.HeaderCell>

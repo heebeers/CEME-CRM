@@ -5,14 +5,18 @@ pipeline {
     stages {
         stage('Dependencies') {
             steps {
-                sh 'cd client'
-                sh 'npm install'
+                dir("client") {
+                    sh 'npm install'
+                }
+
+                
             }
         }
         stage('Build') {
             steps {
-                sh 'cd client'
+                dir("client") {
                 sh 'npm run-script build'
+                }
             }
         }
         stage('Delivery') {

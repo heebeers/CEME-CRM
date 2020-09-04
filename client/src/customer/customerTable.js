@@ -30,8 +30,10 @@ const CustomerTable = ({ customers }) => {
                 </Link>
               </Table.Cell>
               <Table.Cell>
-                {customer.currentAddressLine1} {customer.currentAddressLine2}{" "}
-                {customer.currentAddressCity} {customer.currentAddressState}{" "}
+                {customer.currentAddressLine1}
+                {customer.currentAddressLine2}
+                <br />
+                {customer.currentAddressCity} {customer.currentAddressState},{" "}
                 {customer.currentAddresszip}
               </Table.Cell>
               <Table.Cell>{customer.customerPhone}</Table.Cell>

@@ -5,8 +5,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'cd crm'
-                sh 'gradle clean build'
+                dir("crm") {
+                    sh 'gradle clean build'
+                }                
             }
         }
         stage('Delivery') {

@@ -22,11 +22,11 @@ const CustomerTable = ({ customers }) => {
           {customers.map((customer) => (
             <Table.Row>
               <Table.Cell>
-              <Link
+                <Link
                   to={"/edit?id=" + customer._links.self.href.substring(32)}
                   className="nav-link"
                 >
-                {customer.firstName} {customer.lastName}
+                  {customer.firstName} {customer.lastName}
                 </Link>
               </Table.Cell>
               <Table.Cell>
@@ -34,7 +34,7 @@ const CustomerTable = ({ customers }) => {
                 {customer.currentAddressCity} {customer.currentAddressState}{" "}
                 {customer.currentAddresszip}
               </Table.Cell>
-              <Table.Cell>{customer.currentPhone}</Table.Cell>
+              <Table.Cell>{customer.customerPhone}</Table.Cell>
               <Table.Cell>{customer.email}</Table.Cell>
               <Table.Cell>{customer.products}</Table.Cell>
               <Table.Cell>
@@ -52,11 +52,11 @@ const CustomerTable = ({ customers }) => {
                   to={"/delete?id=" + customer._links.self.href.substring(32)}
                   className="nav-link"
                 >
-                <Popup
-                  trigger={<Icon name="trash alternative" />}
-                  content={`Delete ${customer.firstName} ${customer.lastName}`}
-                  size="mini"
-                />
+                  <Popup
+                    trigger={<Icon name="trash alternative" />}
+                    content={`Delete ${customer.firstName} ${customer.lastName}`}
+                    size="mini"
+                  />
                 </Link>
                 <Link
                   to={

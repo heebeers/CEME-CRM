@@ -296,7 +296,6 @@ function Edit(props) {
               />
             </Form.Group>
             <Form.Group widths="equal">
-              <label for="serviceStartDate">Service Start Date: </label>
               <Form.Input
                 label="Service Start Date"
                 id="serviceStartDate"
